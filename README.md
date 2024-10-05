@@ -47,6 +47,27 @@ export default App;
 
 [![Storybook](https://img.shields.io/badge/Storybook-FF4785?style=for-the-badge&logo=storybook&logoColor=white)](https://ui.microapp.io/)
 
+## How to create new components?
+
+We are using [shadcn/ui](https://ui.shadcn.com/) for building our components. If you've never used shadcn/ui, please check their [docs](https://ui.shadcn.com/docs).
+
+### Example of installing Alert component
+
+```bash
+npx shadcn@latest add alert
+```
+
+This will generate generate the component under `/components/ui`.
+
+Export the created component in our `src/index.ts` file.
+
+```typescript
+import "./index.css";
+
+export * from "@/components/ui/button";
+export * from "@/components/ui/alert";
+```
+
 ## License
 
 This project is licensed under the MIT License.
