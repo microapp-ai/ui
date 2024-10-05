@@ -68,6 +68,10 @@ export * from "@/components/ui/button";
 export * from "@/components/ui/alert";
 ```
 
+### Create stories (Storybook)
+
+We are using Storybook, so please don't forget about creating stories for your new component. You can see the `/components/ui/button.stories.tsx` as an example.
+
 ## License
 
 This project is licensed under the MIT License.
