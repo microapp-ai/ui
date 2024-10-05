@@ -30,6 +30,7 @@ After installing the package, you can start using the components in your React a
 ```TypeScript
 import React from 'react';
 import { Button } from '@microapp-io/ui';
+import "@microapp-io/ui/dist/style.css";
 
 function App() {
   return (
@@ -43,6 +44,7 @@ export default App;
 ```
 
 ## Storybook
+
 [![Storybook](https://img.shields.io/badge/Storybook-FF4785?style=for-the-badge&logo=storybook&logoColor=white)](https://microapp-ai.github.io/ui/)
 
 ## License
