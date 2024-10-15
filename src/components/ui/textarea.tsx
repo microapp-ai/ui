@@ -17,8 +17,8 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
         <textarea
           className={cn(
             "flex min-h-[80px] w-full rounded-md px-3 py-2 text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:border-2 focus-visible:border-ring disabled:cursor-not-allowed disabled:opacity-50",
-            variant === "default" && "bg-background border border-muted-foreground", // Add border in default variant
-            variant === "filled" && "bg-muted text-foreground border-none", // Add bg in filled variant, no border
+            variant === "default" && "bg-background border border-input", // Add border in default variant
+            variant === "filled" && "bg-muted text-foreground border-0 focus:border-1", // Add bg in filled variant, no border
             error && "border-destructive focus-visible:ring-destructive",
             props.disabled && "bg-muted text-muted-foreground",
             className
@@ -26,7 +26,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           ref={ref}
           {...props}
         />
-        {error && <p className="text-sm text-red-500">{error}</p>}
+        {error && <p className="text-sm text-destructive">{error}</p>}
       </div>
     );
   }
