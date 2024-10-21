@@ -74,10 +74,10 @@ export const FileSelector: React.FC<FileSelectorProps> = ({
   return (
     <div className="flex flex-col gap-0" style={{ width }}>
       {/* Label */}
-      <Label className="text-md font-medium text-foreground mb-[4px]">{label}</Label>
+      <Label className="text-md font-bold text-foreground mb-[4px]">{label}</Label>
 
       {/* Description */}
-      {description && <p className="text-sm text-muted-foreground mb-[12px]">{description}</p>}
+      {description && <p className="text-sm text-foreground-muted mb-[12px]">{description}</p>}
 
       {/* File Input Container */}
       <div
@@ -87,7 +87,7 @@ export const FileSelector: React.FC<FileSelectorProps> = ({
             ? "bg-muted border-none"
             : cn(
               "border-2", // Base border class
-              error ? "border-destructive text-destructive" : "border-muted", // Apply error border if present
+              error ? "border-destructive text-destructive" : "border-foreground-border", // Apply error border if present
               isFocused && !error ? "border-ring" : "", // Blue border on focus if no error
               disabled ? "bg-muted cursor-not-allowed" : "bg-background"
             ),
@@ -100,7 +100,7 @@ export const FileSelector: React.FC<FileSelectorProps> = ({
           onClick={triggerFileInput}
           disabled={disabled}
           className={cn(
-            "rounded-full px-7 bg-actionable-secondary text-foreground",
+            "rounded-full h-fit py-[7px] px-[14px] mr-[10px] font-bold text-md bg-actionable-secondary text-foreground-onActionableSecondary",
             variant === "filled" && "bg-muted",
             "hover:bg-actionable-secondary-hover",
           )}
@@ -115,7 +115,7 @@ export const FileSelector: React.FC<FileSelectorProps> = ({
           onClick={triggerFileInput}
           disabled={disabled}
           className={cn(
-            "bg-transparent border-0 text-muted-foreground pl-4",
+            "bg-transparent border-0 text-foreground-muted pl-[16px] py-[8.5px]",
             variant === "filled" && "bg-muted", // Make input background match in 'filled' variant,
             "focus-visible:!outline-none",
             error && "text-destructive"

@@ -27,7 +27,7 @@ export const Default = Template.bind({});
 Default.args = {
   label: "Upload File",
   description: "Please upload a file.",
-  width: "300px", // Custom width
+  width: "430px", // Custom width
 };
 
 // Clearable FileSelector

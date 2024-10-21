@@ -28,7 +28,7 @@ export default {
     },
     rows: {
       control: { type: "number" },
-      defaultValue: 3,
+      defaultValue: 5,
     },
     maxLength: {
       control: { type: "number" },
@@ -55,6 +55,18 @@ Default.args = {
   placeholder: "Enter your text...",
   description: "This is a description",
   variant: "default", // Set default variant
+  rows: 5,
+  disabled: false,
+};
+// Dark Textarea story
+export const DarkMode = Template.bind({});
+DarkMode.args = {
+  className: "dark",
+  label: "Label",
+  placeholder: "Enter your text...",
+  description: "This is a description",
+  variant: "default", // Set default variant
+  rows: 5,
   disabled: false,
 };
 
@@ -63,15 +75,8 @@ export const WithError = Template.bind({});
 WithError.args = {
   label: "Label",
   placeholder: "Enter your text...",
+  description: "This is a description",
   error: "This field is required",
-  variant: "default",
-};
-
-// Textarea with custom rows story
-export const WithRows = Template.bind({});
-WithRows.args = {
-  label: "Label",
-  placeholder: "Enter your text...",
   rows: 5,
   variant: "default",
 };
@@ -83,6 +88,7 @@ WithMaxLength.args = {
   placeholder: "Enter your text...",
   maxLength: 150,
   description: "Max length is 150 characters.",
+  rows: 5,
   variant: "default",
 };
 
@@ -93,6 +99,8 @@ Disabled.args = {
   placeholder: "Disabled textarea",
   disabled: true,
   description: "This input is disabled.",
+  rows: 5,
+
   variant: "default",
 };
 
@@ -102,6 +110,8 @@ CustomClassName.args = {
   label: "Label",
   placeholder: "Custom class textarea",
   className: "bg-gray-100 border-blue-500",
+  rows: 5,
+
   variant: "default",
 };
 
@@ -112,4 +122,6 @@ Filled.args = {
   placeholder: "Filled variant textarea",
   variant: "filled",
   description: "This is a filled variant.",
+  rows: 5,
+
 };
