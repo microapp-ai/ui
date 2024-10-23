@@ -28,6 +28,18 @@ Default.args = {
   formats: ['image/jpeg', 'image/png'],
   onFileDrop: (files) => console.log(files),
 };
+export const DarkMode = Template.bind({});
+DarkMode.args = {
+  className: "dark",
+  label: 'Upload Your Files',
+  description: 'Drag and drop image files here or click to select files.',
+  width: '700px',
+  formats: ['image/jpeg', 'image/png'],
+  onFileDrop: (files) => console.log(files),
+};
+DarkMode.parameters = {
+  backgrounds: { default: "dark" },
+};
 
 export const WithError = Template.bind({});
 WithError.args = {

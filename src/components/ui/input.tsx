@@ -15,7 +15,7 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ className, type, label, description, leftIcon, rightIcon, error, errorMessage, width, ...props }, ref) => {
     return (
-      <div className="relative flex flex-col w-full" style={{ width }}>
+      <div className={cn("relative flex flex-col w-full",className)} style={{ width }}>
         {label && (
           <label className={cn(`text-md font-bold text-foreground mb-[${description ? '4px' : '12px'}]`,
             "text-foreground"
@@ -37,8 +37,8 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           <input
             type={type}
             className={cn(
-              `flex h-10 w-full rounded-md border bg-background px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground`,
-              `focus-visible:outline-2 focus-visible:outline-destructive focus-visible:outline-offset-2 `,
+              `flex h-10 w-full rounded-md border bg-background px-3 py-2 text-sm text-foreground file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground`,
+              `focus-visible:!outline-none focus-visible:border-2 focus-visible:border-ring`,
               `disabled:cursor-not-allowed disabled:bg-muted`,
               leftIcon && "pl-10", // Add padding if left icon is present
               rightIcon && "pr-10", // Add padding if right icon is present

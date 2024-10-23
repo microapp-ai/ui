@@ -58,6 +58,9 @@ export const DarkMode: Story = {
     />
   ),
 };
+DarkMode.parameters = {
+  backgrounds: { default: "dark" },
+};
 
 // Disabled Select Story
 export const Disabled: Story = {

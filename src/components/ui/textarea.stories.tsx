@@ -79,6 +79,10 @@ DarkMode.args = {
   disabled: false,
 };
 
+DarkMode.parameters = {
+  backgrounds: { default: "dark" },
+};
+
 // Textarea with error message
 export const WithError = Template.bind({});
 WithError.args = {

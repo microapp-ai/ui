@@ -70,6 +70,17 @@ Default.args = {
   label: "Default Input",
   description: "This is a default input field.",
 };
+export const DarkMode = Template.bind({});
+DarkMode.args = {
+  className: "dark",
+  type: "text",
+  placeholder: "Enter text...",
+  label: "Default Input",
+  description: "This is a default input field.",
+};
+DarkMode.parameters = {
+  backgrounds: { default: "dark" },
+};
 
 // Password input with right icon
 export const PasswordWithRightIcon = Template.bind({});

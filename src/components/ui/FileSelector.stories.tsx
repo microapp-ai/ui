@@ -39,6 +39,16 @@ Default.args = {
   description: "Please upload a file.",
   width: "430px", // Custom width
 };
+export const DarkMode = Template.bind({});
+DarkMode.args = {
+  className: "dark",
+  label: "Upload File",
+  description: "Please upload a file.",
+  width: "430px", // Custom width
+};
+DarkMode.parameters = {
+  backgrounds: { default: "dark" },
+};
 
 // Clearable FileSelector
 export const Clearable = Template.bind({});

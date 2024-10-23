@@ -13,6 +13,7 @@ export interface FileUploadProps {
   onFileDrop?: (files: File[]) => void; // Handler for when files are dropped
   renderDropzoneContent?: (isDragActive: boolean) => React.ReactNode; // Function to render custom dropzone content
   width?: string; // New width prop
+  className?: string;
 }
 
 export const FileUpload: React.FC<FileUploadProps> = ({
@@ -24,7 +25,8 @@ export const FileUpload: React.FC<FileUploadProps> = ({
   value, // Passed files
   onFileDrop, // Handler for external control
   renderDropzoneContent, // Custom render function for dropzone content
-  width = "100%", // Default width
+  width = "100%", // Default width,
+  className,
 }) => {
   // Internal state to manage files if not controlled externally
   const [internalFiles, setInternalFiles] = useState<File[]>([]);
@@ -78,7 +80,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({
   };
 
   return (
-    <div className="flex flex-col" style={{ width }}>
+    <div className={cn("flex flex-col",className )}style={{ width }}>
       {/* Label */}
       <label className="text-lg font-bold text-foreground mb-[4px]">{label}</label>
       {description &&
@@ -138,7 +140,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({
         <div className="border-[1px] border-actionable-secondary-hover my-[24px] w-full" />
         {/* Browse Button */}
         <Button
-          variant={'outline'}
+          variant={'secondary'}
           children={'Browse'}
           disabled={disabled}
         />

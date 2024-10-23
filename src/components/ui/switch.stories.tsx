@@ -26,15 +26,19 @@ export const Default = Template.bind({});
 Default.args = {
   className: "",
 }; 
+export const DarkMode = Template.bind({});
+DarkMode.args = {
+  className: "dark",
+};
+DarkMode.parameters = {
+  backgrounds: { default: "dark" },
+};
 export const WithLabel = Template.bind({});
 WithLabel.args = {
   className: "",
   label: "Switch Label"
 };
-export const DarkMode = Template.bind({});
-DarkMode.args = {
-  className: "dark",
-};
+
 
 export const Disabled = Template.bind({});
 Disabled.args = {

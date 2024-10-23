@@ -54,39 +54,24 @@ export const DefaultModal: Story = () => {
     </>
   );
 };
-
-DefaultModal.parameters = {
-  docs: {
-    description: {
-      story: "This is a default modal with a close button and a title.",
-    },
-    source: {
-      code: `
-        <Button onClick={() => setOpened(true)}>Open Modal</Button>
-        <Modal opened={opened} onClose={() => setOpened(false)} title="Default Modal">
-          <p>This is a default modal with a close button and a title.</p>
-          <div className="mt-[24px] flex gap-2">
-            <Button>OK</Button>
-            <Button variant="outline" onClick={() => setOpened(false)}>
-              Close
-            </Button>
-          </div>
-        </Modal>
-      `,
-    },
-  },
-};
 // Modal in dark mode
-export const DarkMode = Template.bind({});
-DarkMode.args = {
-  title: "Dark Mode Modal",
-  className: "dark", // Adding dark mode class
-  children: (
-    <>
-      <p>This modal is displayed in dark mode.</p>
-      <button className="btn-secondary mt-4">Perform Action</button>
-    </>
-  ),
+export const DarkMode: Story = () => {
+  const [opened, setOpened] = useState(false);
+
+  return (
+    <div className="dark">
+      <Button onClick={() => setOpened(true)}>Open Modal</Button>
+      <Modal className="dark" opened={opened} onClose={() => setOpened(false)} title={<p className="text-foreground">DarkMode Modal</p>}>
+        <p className="text-foreground-muted">This is a default modal with a close button and a title.</p>
+        <div className="mt-[24px] flex gap-2">
+          <Button onClick={() => setOpened(false)}>OK</Button>
+          <Button variant={'secondary'}  onClick={() => setOpened(false)}>
+            Close
+          </Button>
+        </div>
+      </Modal>
+    </div>
+  );
 };
 DarkMode.parameters = {
   backgrounds: { default: "dark" },

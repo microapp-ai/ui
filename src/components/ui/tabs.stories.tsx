@@ -27,14 +27,14 @@ const Template: Story = (args) => (
     </TabsList>
     <TabsContent value="tab1">
       <div className="p-4">
-        <h2 className="text-lg font-bold">Content for Tab 1</h2>
-        <p>This is the content area for Tab 1.</p>
+        <h2 className="text-foreground text-lg font-bold">Content for Tab 1</h2>
+        <p className="text-muted-foreground">This is the content area for Tab 1.</p>
       </div>
     </TabsContent>
     <TabsContent value="tab2">
       <div className="p-4">
-        <h2 className="text-lg font-bold">Content for Tab 2</h2>
-        <p>This is the content area for Tab 2.</p>
+        <h2 className="text-lg font-bold text-foreground">Content for Tab 2</h2>
+        <p className="text-muted-foreground">This is the content area for Tab 2.</p>
       </div>
     </TabsContent>
   </Tabs>
@@ -49,4 +49,7 @@ Default.args = {
 export const DarkMode = Template.bind({});
 DarkMode.args = {
   className: "dark"
+};
+DarkMode.parameters = {
+  backgrounds: { default: "dark" },
 };

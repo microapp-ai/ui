@@ -42,6 +42,9 @@ export const DarkMode: Story = {
     </RadioGroup>
   ),
 };
+DarkMode.parameters = {
+  backgrounds: { default: "dark" },
+};
 
 // Horizontal RadioGroup Story
 export const Horizontal: Story = {
