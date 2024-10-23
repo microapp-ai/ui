@@ -5,6 +5,15 @@ import { Textarea, TextareaProps } from "./textarea"; // Adjust the path to your
 export default {
   title: "Components/Textarea",
   component: Textarea,
+  parameters: {
+    backgrounds: {
+      default: "light",
+      values: [
+        { name: "light", value: "#ffffff" },
+        { name: "dark", value: "#000000" },
+      ],
+    },
+  },
   argTypes: {
     label: {
       control: "text",

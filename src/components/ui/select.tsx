@@ -21,7 +21,7 @@ const SelectTrigger = React.forwardRef<
   <SelectPrimitive.Trigger
     ref={ref}
     className={cn(
-      "flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-2 focus:border-ring  disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-muted",
+      "flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-2 focus:border-ring  disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-surface-muted",
       {
         "hover:bg-border": !disabled, // Apply hover style only if not disabled
       },
@@ -67,7 +67,7 @@ const SelectItem = React.forwardRef<
   <SelectPrimitive.Item
     ref={ref}
     className={cn(
-      "relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none focus:bg-actionable-secondary focus:text-accent-foreground",
+      "relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none focus:bg-surface-hoverActionableSecondary focus:text-accent-foreground",
       className
     )}
     {...props}
@@ -85,7 +85,7 @@ SelectItem.displayName = SelectPrimitive.Item.displayName;
 const CustomSelect: React.FC<SelectProps> = ({ className,label, options, disabled, width = '100%',item_indicator_icon=<Check className="h-4 w-4"/> }) => {
   return (
     <div className={`select-container ${className}`} style={{ width }}>
-      <label className="block text-sm text-foreground font-medium mb-2">{label}</label>
+      <label className="block text-md text-foreground font-bold mb-2">{label}</label>
       <Select onOpenChange={(open) => { }} disabled={disabled}>
         <SelectTrigger className="w-full" disabled={disabled}>
           <SelectPrimitive.Value placeholder="Select an option" />

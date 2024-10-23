@@ -7,6 +7,15 @@ import { Check } from "lucide-react";
 const meta: Meta = {
   title: "Components/Select",
   component: Select,
+  parameters: {
+    backgrounds: {
+      default: "light",
+      values: [
+        { name: "light", value: "#ffffff" },
+        { name: "dark", value: "#000000" },
+      ],
+    },
+  },
 };
 
 export default meta;

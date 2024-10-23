@@ -5,6 +5,15 @@ import { ImageCarousel } from './ImageList'
 const meta: Meta = {
   title: 'Components/FileUpload',
   component: FileUpload,
+  parameters: {
+    backgrounds: {
+      default: "light",
+      values: [
+        { name: "light", value: "#ffffff" },
+        { name: "dark", value: "#000000" },
+      ],
+    },
+  },
 };
 
 export default meta;

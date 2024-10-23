@@ -9,26 +9,26 @@ interface FileSelectorProps {
   label: string;
   description?: string;
   clearable?: boolean; // Clear button
-  radius?: "sm" | "md" | "lg" | number | null;
   error?: string; // Error message string
   disabled?: boolean; // Disabled state
   placeholder?: string; // Custom placeholder
   formats?: string[]; // Accepted file formats (e.g., ["image/png", "image/jpeg"])
   variant?: "default" | "filled"; // Variant for input style
   width?: string; // Custom width (e.g., "300px", "100%")
+  className?: string;
 }
 
 export const FileSelector: React.FC<FileSelectorProps> = ({
   label,
   description,
   clearable = false, // Default false, no clear button by default
-  radius = "md",
   error = "",
   disabled = false,
   placeholder = "No file selected",
   formats,
   variant = "default", // Default to 'default' variant
   width = "280px", // Default width
+  className
 }) => {
   const [fileName, setFileName] = React.useState(placeholder);
   const fileInputRef = React.useRef<HTMLInputElement | null>(null);
@@ -60,19 +60,9 @@ export const FileSelector: React.FC<FileSelectorProps> = ({
     }
   };
 
-  const roundedClass =
-    radius === "sm"
-      ? "rounded-sm"
-      : radius === "md"
-        ? "rounded-md"
-        : radius === "lg"
-          ? "rounded-lg"
-          : radius && typeof radius === "number"
-            ? `rounded-[${radius}px]`
-            : "";
 
   return (
-    <div className="flex flex-col gap-0" style={{ width }}>
+    <div className={cn("flex flex-col gap-0",className)} style={{ width }}>
       {/* Label */}
       <Label className="text-md font-bold text-foreground mb-[4px]">{label}</Label>
 
@@ -82,16 +72,16 @@ export const FileSelector: React.FC<FileSelectorProps> = ({
       {/* File Input Container */}
       <div
         className={cn(
-          "flex items-center justify-start mt-[12px] p-[2px] hover:bg-muted",
+          "flex items-center rounded-lg justify-start mt-[12px] p-[4px] hover:bg-surface-muted",
+          disabled && "cursor-not-allowed",
           variant === "filled"
-            ? "bg-muted border-none"
+            ? (error ? "bg-surface-backgroundSecondary border-[1px] border-foreground-statusErrorSecondary" : "bg-surface-backgroundSecondary border-none")
             : cn(
-              "border-2", // Base border class
-              error ? "border-destructive text-destructive" : "border-foreground-border", // Apply error border if present
+              "border-[1px]", // Base border class
+              error ? "border-foreground-statusErrorSecondary text-foreground-statusErrorSecondary" : "border-foreground-border", // Apply error border if present
               isFocused && !error ? "border-ring" : "", // Blue border on focus if no error
-              disabled ? "bg-muted cursor-not-allowed" : "bg-background"
+              disabled ? "bg-surface-muted cursor-not-allowed" : "bg-background"
             ),
-          roundedClass
         )}
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
@@ -100,8 +90,8 @@ export const FileSelector: React.FC<FileSelectorProps> = ({
           onClick={triggerFileInput}
           disabled={disabled}
           className={cn(
-            "rounded-full h-fit py-[7px] px-[14px] mr-[10px] font-bold text-md bg-actionable-secondary text-foreground-onActionableSecondary",
-            variant === "filled" && "bg-muted",
+            "rounded-full h-fit py-[7px] px-[14px] mr-[10px] font-bold text-md bg-surface-actionableSecondary text-foreground-onActionableSecondary",
+            variant === "filled" && "bg-surface-muted disabled:bg-surface-actionableSecondary",
             "hover:bg-actionable-secondary-hover",
           )}
         >
@@ -116,7 +106,7 @@ export const FileSelector: React.FC<FileSelectorProps> = ({
           disabled={disabled}
           className={cn(
             "bg-transparent border-0 text-foreground-muted pl-[16px] py-[8.5px]",
-            variant === "filled" && "bg-muted", // Make input background match in 'filled' variant,
+            // variant === "filled" && "bg-surface-backgroundSecondary hover:bg-surface-backgroundSecondary", // Make input background match in 'filled' variant,
             "focus-visible:!outline-none",
             error && "text-destructive"
           )}

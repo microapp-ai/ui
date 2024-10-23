@@ -6,6 +6,15 @@ import { RadioGroup, RadioGroupItem } from "./radio-group"; // Adjust the import
 const meta: Meta = {
   title: "Components/RadioGroup",
   component: RadioGroup,
+  parameters: {
+    backgrounds: {
+      default: "light",
+      values: [
+        { name: "light", value: "#ffffff" },
+        { name: "dark", value: "#000000" },
+      ],
+    },
+  },
 };
 
 export default meta;

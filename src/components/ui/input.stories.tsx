@@ -7,6 +7,15 @@ import { IconLock, IconNumber123, IconSearch } from "@tabler/icons-react";
 export default {
   title: "Components/Input",
   component: Input,
+  parameters: {
+    backgrounds: {
+      default: "light",
+      values: [
+        { name: "light", value: "#ffffff" },
+        { name: "dark", value: "#000000" },
+      ],
+    },
+  },
   argTypes: {
     type: {
       control: { type: "select" },
