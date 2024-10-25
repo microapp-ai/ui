@@ -15,10 +15,61 @@ module.exports = {
       },
       colors: {
         background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
-        actionable:{
-          DEFAULT: "hsl(var(--actionable))",
-          secondary: "hsl(var(--actionable-secondary))",
+        foreground: {
+          DEFAULT: "hsl(var(--foreground))",
+          border: "hsl(var(--foreground-border))",
+          focusRing: "hsl(var(--foreground-focus-ring))",
+          onActionableDestructive:
+            "hsl(var(--foreground-onactionable-destructive))",
+          onActionableSecondary:
+            "hsl(var(--foreground-onactionable-secondary))",
+          onActionablePrimary: "hsl(var(--foreground-onactionable-primary))",
+          muted: "hsl(var(--foreground-muted))",
+          subtle: "hsl(var(--foreground-subtle))",
+          trioPrimary: "hsl(var(--foreground-trio-primary))",
+          ratingStar: "hsl(var(--foreground-rating-star))",
+          hoverActionable: "hsl(var(--foreground-hover-actionable))",
+          hoverBorder: "hsl(var(--foreground-hover-border))",
+          activeActionable: "hsl(var(--foreground-active-actionable))",
+          actionable: "hsl(var(--foreground-actionable))",
+          statusWarningSecondary:
+            "hsl(var(--foreground-status-warningsecondary))",
+          destructive: "hsl(var(--foreground-destructive))",
+          statusPositiveSecondary:
+            "hsl(var(--foreground-status-positivesecondary))",
+          statusErrorSecondary: "hsl(var(--foreground-status-errorsecondary))",
+          statusInfoSecondary: "hsl(var(--foreground-status-infosecondary))",
+          statusNeutralSecondary:
+            "hsl(var(--foreground-status-neutralsecondary))",
+          mutedAccent: "hsl(var(--foreground-muted-accent))",
+          mutedHigherContrast: "hsl(var(--foreground-muted-highercontrast))",
+        },
+        surface: {
+          hoverActionableDestructive:
+            "hsl(var(--surface-hoveractionable-destructive))",
+          actionableDestructive: "hsl(var(--surface-actionable-destructive))",
+          accent: "hsl(var(--surface-accent))",
+          hoverActionableSecondary:
+            "hsl(var(--surface-hoveractionable-secondary))",
+          actionableSecondary: "hsl(var(--surface-actionable-secondary))",
+          actionablePrimary: "hsl(var(--surface-actionable-primary))",
+          hoverActionablePrimary: "hsl(var(--surface-hoveractionable-primary))",
+          muted: "hsl(var(--surface-muted))",
+          backgroundPrimary: "hsl(var(--surface-background-primary))",
+          backgroundSecondary: "hsl(var(--surface-background-secondary))",
+          backgroundTertiary: "hsl(var(--surface-background-tertiary))",
+          backgroundQuaternary: "hsl(var(--surface-background-quaternary))",
+          backgroundAccent: "hsl(var(--surface-background-accent))",
+          activeActionablePrimary:
+            "hsl(var(--surface-active-actionableprimary))",
+          activeActionableSecondary:
+            "hsl(var(--surface-active-actionablesecondary))",
+          appIconBlue: "hsl(var(--surface--appicon-blue))",
+          appIconOrange: "hsl(var(--surface--appicon-orange))",
+          activeActionableDestructive:
+            "hsl(var(--surface-active-actionabledestructive))",
+          statusNeutralPrimary: "hsl(var(--surface-status-neutralprimary))",
+          statusWarningSecondary: "hsl(var(--surface-status-warningsecondary))",
         },
         card: {
           DEFAULT: "hsl(var(--card))",
@@ -35,6 +86,12 @@ module.exports = {
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
+        },
+        actionable: {
+          secondary: {
+            DEFAULT: "hsl(var(--actionable-secondary))",
+            hover: "hsl(var(--actionable-secondary-hover))",
+          },
         },
         muted: {
           DEFAULT: "hsl(var(--muted))",

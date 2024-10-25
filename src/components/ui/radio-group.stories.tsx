@@ -6,6 +6,15 @@ import { RadioGroup, RadioGroupItem } from "./radio-group"; // Adjust the import
 const meta: Meta = {
   title: "Components/RadioGroup",
   component: RadioGroup,
+  parameters: {
+    backgrounds: {
+      default: "light",
+      values: [
+        { name: "light", value: "#ffffff" },
+        { name: "dark", value: "#000000" },
+      ],
+    },
+  },
 };
 
 export default meta;
@@ -32,6 +41,9 @@ export const DarkMode: Story = {
       <RadioGroupItem value="option3" label="Option 3" />
     </RadioGroup>
   ),
+};
+DarkMode.parameters = {
+  backgrounds: { default: "dark" },
 };
 
 // Horizontal RadioGroup Story
