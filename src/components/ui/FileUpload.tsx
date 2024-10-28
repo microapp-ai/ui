@@ -120,13 +120,13 @@ export const FileUpload: React.FC<FileUploadProps> = ({
                 <path
                   d="M5.33313 20.3657C4.34252 19.3536 3.59523 18.1293 3.14785 16.7856C2.70047 15.4419 2.56474 14.014 2.75095 12.6101C2.93715 11.2062 3.44041 9.86302 4.22259 8.6824C5.00478 7.50178 6.04538 6.51464 7.26558 5.79575C8.48578 5.07687 9.85357 4.64509 11.2654 4.53312C12.6771 4.42116 14.0959 4.63194 15.4142 5.1495C16.7324 5.66706 17.9156 6.47783 18.8741 7.5204C19.8326 8.56297 20.5413 9.81 20.9465 11.167H23.3331C24.6205 11.1669 25.8737 11.5808 26.9078 12.3476C27.9418 13.1144 28.7018 14.1935 29.0755 15.4254C29.4492 16.6574 29.4167 17.9768 28.9829 19.1889C28.5491 20.4009 27.737 21.4413 26.6665 22.1564M15.9998 16.5004V28.5004M15.9998 16.5004L21.3331 21.8337M15.9998 16.5004L10.6665 21.8337"
                   stroke="#76767F"
-                  strokeWidth="2"
+                  strokeWidth="2.5"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 />
               </svg>
             </div>
-            <p className="text-sm text-gray-400">
+            <p className="text-lg text-foreground">
               {isDragActive
                 ? "Drop the files here..."
                 : "Drag and drop image files here"}
@@ -140,9 +140,10 @@ export const FileUpload: React.FC<FileUploadProps> = ({
         <div className="border-[1px] border-actionable-secondary-hover my-[24px] w-full" />
         {/* Browse Button */}
         <Button
-          variant={'secondary'}
+          variant={'outline'}
           children={'Browse'}
           disabled={disabled}
+          className="font-bold !bg-transparent !border-[1px] !border-foreground-border"
         />
 
         {/* Display selected files */}
