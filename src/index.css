@@ -16,6 +16,7 @@ body,
     --foreground-border: 240, 4%, 78%;
     --foreground-focus-ring: 224, 80%, 52%;
     --foreground-onactionable-destructive: 0, 0%, 100%;
+    --foreground-accent: 240, 6%, 10%;
     --foreground-onactionable-secondary: 240, 2%, 8%;
     --foreground-onactionable-primary: 0, 0%, 100%;
     --foreground-muted: 240, 4%, 58%;

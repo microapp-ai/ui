@@ -9,22 +9,28 @@ interface SelectProps {
   label: React.ReactNode;
   options: { value: string; label: string }[];
   disabled?: boolean;
-  width?: string; // New width prop
+  width?: string; // Width prop
   item_indicator_icon?: React.ReactNode;
-  className?:string
+  className?: string;
+  size?: 'lg' | 'md' | 'sm'; // New size prop
 }
+
+const sizeStyles = {
+  lg: "h-12 text-base py-3 px-4",
+  md: "h-10 text-sm py-2 px-3",
+  sm: "h-8 text-xs py-1 px-2",
+};
 
 const SelectTrigger = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Trigger>,
-  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger>
->(({ className, children, disabled, ...props }, ref) => (
+  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger> & { size: 'lg' | 'md' | 'sm' }
+>(({ className, children, disabled, size = 'md', ...props }, ref) => (
   <SelectPrimitive.Trigger
     ref={ref}
     className={cn(
-      "flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-2 focus:border-ring  disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-surface-muted",
-      {
-        "hover:bg-border": !disabled, // Apply hover style only if not disabled
-      },
+      `flex w-full items-center justify-between rounded-md border border-foreground-border bg-background placeholder:text-muted-foreground focus:outline-none focus:bg-surface-activeActionableSecondary disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-surface-muted`,
+      sizeStyles[size],
+      { "hover:bg-surface-hoverActionableSecondary": !disabled },
       className
     )}
     {...props}
@@ -39,7 +45,7 @@ SelectTrigger.displayName = SelectPrimitive.Trigger.displayName;
 
 const SelectContent = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Content>
+  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Content> & { width?: string }
 >(({ className, children, width, ...props }, ref) => (
   <SelectPrimitive.Portal>
     <SelectPrimitive.Content
@@ -48,22 +54,21 @@ const SelectContent = React.forwardRef<
         "relative z-50 overflow-hidden bg-popover rounded-sm text-popover-foreground shadow-md",
         className
       )}
-      style={{ width }} // Set width from props
+      style={{ width }}
       position="popper"
-      sideOffset={4} // Control vertical spacing
+      sideOffset={4}
       {...props}
     >
       <SelectPrimitive.Viewport className="p-1">{children}</SelectPrimitive.Viewport>
     </SelectPrimitive.Content>
   </SelectPrimitive.Portal>
 ));
-
 SelectContent.displayName = SelectPrimitive.Content.displayName;
 
 const SelectItem = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Item>,
-  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Item>
->(({ className, children, item_indicator_icon,...props }, ref) => (
+  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Item> & { item_indicator_icon?: React.ReactNode }
+>(({ className, children, item_indicator_icon, ...props }, ref) => (
   <SelectPrimitive.Item
     ref={ref}
     className={cn(
@@ -82,12 +87,20 @@ const SelectItem = React.forwardRef<
 ));
 SelectItem.displayName = SelectPrimitive.Item.displayName;
 
-const CustomSelect: React.FC<SelectProps> = ({ className,label, options, disabled, width = '100%',item_indicator_icon=<Check className="h-4 w-4"/> }) => {
+const CustomSelect: React.FC<SelectProps> = ({
+  className,
+  label,
+  options,
+  disabled,
+  width = '100%',
+  item_indicator_icon = <Check className="h-4 w-4" />,
+  size = 'md'
+}) => {
   return (
     <div className={`select-container ${className}`} style={{ width }}>
       <label className="block text-md text-foreground font-bold mb-2">{label}</label>
       <Select onOpenChange={(open) => { }} disabled={disabled}>
-        <SelectTrigger className="w-full" disabled={disabled}>
+        <SelectTrigger className="w-full" disabled={disabled} size={size}>
           <SelectPrimitive.Value placeholder="Select an option" />
         </SelectTrigger>
         <SelectContent width={width} className={`w-full ${className}`}> {/* Pass the width */}

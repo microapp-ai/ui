@@ -18,6 +18,7 @@ module.exports = {
         foreground: {
           DEFAULT: "hsl(var(--foreground))",
           border: "hsl(var(--foreground-border))",
+          accent: "hsl(var(--foreground-accent))",
           focusRing: "hsl(var(--foreground-focus-ring))",
           onActionableDestructive:
             "hsl(var(--foreground-onactionable-destructive))",

@@ -35,7 +35,42 @@ export const Default: Story = {
         { value: "option5", label: "Option 5" },
       ]}
       item_indicator_icon={<Check className="h-4 w-4" />}
-      width="180px"
+      width="208px"
+    />
+  ),
+};
+
+export const LargeSize: Story = {
+  render: () => (
+    <Select
+      label={<span className="font-bold">Select an option</span>}
+      options={[
+        { value: "option1", label: "Option 1" },
+        { value: "option2", label: "Option 2" },
+        { value: "option3", label: "Option 3" },
+        { value: "option4", label: "Option 4" },
+        { value: "option5", label: "Option 5" },
+      ]}
+      item_indicator_icon={<Check className="h-4 w-4" />}
+      width="208px"
+      size="lg"
+    />
+  ),
+};
+export const SmallSize: Story = {
+  render: () => (
+    <Select
+      label={<span className="font-bold">Select an option</span>}
+      options={[
+        { value: "option1", label: "Option 1" },
+        { value: "option2", label: "Option 2" },
+        { value: "option3", label: "Option 3" },
+        { value: "option4", label: "Option 4" },
+        { value: "option5", label: "Option 5" },
+      ]}
+      item_indicator_icon={<Check className="h-4 w-4" />}
+      width="208px"
+      size="sm"
     />
   ),
 };
@@ -54,7 +89,7 @@ export const DarkMode: Story = {
         { value: "option5", label: "Option 5" },
       ]}
       item_indicator_icon={<Check className="h-4 w-4" />}
-      width="180px"
+      width="208px"
     />
   ),
 };
@@ -75,7 +110,7 @@ export const Disabled: Story = {
         { value: "option5", label: "Option 5" },
       ]}
       item_indicator_icon={<Check className="h-4 w-4" />}
-      width="180px"
+      width="208px"
       disabled
     />
   ),

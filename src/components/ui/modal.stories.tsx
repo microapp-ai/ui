@@ -25,9 +25,7 @@ const Template: Story = (args) => {
 
   return (
     <>
-      <button onClick={openModal} className="btn-primary">
-        Open Modal
-      </button>
+      <Button onClick={() => setOpened(true)}>Open Modal</Button>
       <Modal opened={opened} onClose={closeModal} {...args}>
         {args.children}
       </Modal>
@@ -36,7 +34,7 @@ const Template: Story = (args) => {
 };
 
 // Default modal with title and close button
-export const DefaultModal: Story = () => {
+export const Default: Story = () => {
   const [opened, setOpened] = useState(false);
 
   return (
@@ -54,6 +52,7 @@ export const DefaultModal: Story = () => {
     </>
   );
 };
+
 // Modal in dark mode
 export const DarkMode: Story = () => {
   const [opened, setOpened] = useState(false);
@@ -73,6 +72,9 @@ export const DarkMode: Story = () => {
     </div>
   );
 };
+DarkMode.args = {
+
+}
 DarkMode.parameters = {
   backgrounds: { default: "dark" },
 };
@@ -87,7 +89,9 @@ WithoutCloseButton.args = {
   children: (
     <>
       <p>This modal does not have a close button. You can close it via external triggers.</p>
-      <button className="btn-secondary mt-4">Close Modal</button>
+      <Button variant={'secondary'}>
+        Close
+      </Button>
     </>
   ),
   withCloseButton: false,

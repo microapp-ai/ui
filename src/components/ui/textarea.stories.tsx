@@ -65,6 +65,7 @@ Default.args = {
   description: "This is a description",
   variant: "default", // Set default variant
   rows: 5,
+  width:'430px',
   disabled: false,
 };
 // Dark Textarea story
@@ -76,6 +77,7 @@ DarkMode.args = {
   description: "This is a description",
   variant: "default", // Set default variant
   rows: 5,
+  width: '430px',
   disabled: false,
 };
 
@@ -91,6 +93,7 @@ WithError.args = {
   description: "This is a description",
   error: "This field is required",
   rows: 5,
+  width: '430px',
   variant: "default",
 };
 
@@ -102,6 +105,7 @@ WithMaxLength.args = {
   maxLength: 150,
   description: "Max length is 150 characters.",
   rows: 5,
+  width: '430px',
   variant: "default",
 };
 
@@ -113,6 +117,7 @@ Disabled.args = {
   disabled: true,
   description: "This input is disabled.",
   rows: 5,
+  width: '430px',
 
   variant: "default",
 };
@@ -124,7 +129,7 @@ CustomClassName.args = {
   placeholder: "Custom class textarea",
   className: "bg-gray-100 border-blue-500",
   rows: 5,
-
+  width: '430px',
   variant: "default",
 };
 
@@ -136,5 +141,5 @@ Filled.args = {
   variant: "filled",
   description: "This is a filled variant.",
   rows: 5,
-
+  width: '430px',
 };
