@@ -29,6 +29,8 @@ Default.args = {
 export const DarkMode = Template.bind({});
 DarkMode.args = {
   className: "dark",
+  disabled: false,
+  label: ""
 };
 DarkMode.parameters = {
   backgrounds: { default: "dark" },

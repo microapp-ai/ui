@@ -10,7 +10,8 @@ interface Mark {
 interface SliderProps extends React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root> {
   width?: string | number;
   label?: string;
-  marks?: Mark[]; // Array of mark objects with value and label
+  description?: string; // New description prop
+  marks?: Mark[];
   showValue?: boolean;
   disabled?: boolean;
 }
@@ -18,7 +19,7 @@ interface SliderProps extends React.ComponentPropsWithoutRef<typeof SliderPrimit
 const Slider = React.forwardRef<
   React.ElementRef<typeof SliderPrimitive.Root>,
   SliderProps
->(({ className, width, label, marks = [], showValue, disabled, ...props }, ref) => {
+>(({ className, width, label, description, marks = [], showValue, disabled, ...props }, ref) => {
   // State to hold the current slider value
   const [sliderValue, setSliderValue] = React.useState<number[]>(props.defaultValue ?? [0]);
 
@@ -28,12 +29,16 @@ const Slider = React.forwardRef<
   };
 
   return (
-    <div style={{ width }} className={cn("flex flex-col gap-2", className)}>
+    <div style={{ width }} className={cn("flex flex-col gap-0",className)}>
       {label && (
-        <label>
-          <span className="text-foreground text-md font-bold">{label} </span>
-          {showValue && <span className="text-foreground text-md">: {sliderValue[0]}</span>}
+        <label className="text-md font-bold text-foreground my-0 py-0">
+          {label} {showValue && <span>: {sliderValue[0]}</span>}
         </label>
+      )}
+      {description && (
+        <p className="text-sm text-muted-foreground mt-[4px] mb-[12px] py-0">
+          {description}
+        </p>
       )}
 
       <div className="relative w-full">
@@ -46,8 +51,9 @@ const Slider = React.forwardRef<
           disabled={disabled}
         >
           <SliderPrimitive.Track className="relative h-[8px] w-full rounded-full bg-surface-actionableSecondary">
-            <SliderPrimitive.Range className={cn("absolute h-full bg-primary rounded-lg", disabled && '!bg-foreground-muted')} />
-            {/* Marks inside the track */}
+            <SliderPrimitive.Range
+              className={cn("absolute h-full bg-primary rounded-lg", disabled && "!bg-foreground-muted")}
+            />
             {marks.length > 0 && (
               <div className="absolute inset-0 flex justify-between pointer-events-none mx-2 my-[1px]">
                 {marks.map((mark) => {
@@ -62,19 +68,21 @@ const Slider = React.forwardRef<
                         transform: "translateX(-50%)",
                       }}
                     >
-                      <div className={cn("h-[6px] w-[6px] rounded-full bg-foreground-muted",
-                        disabled && '!bg-foreground-subtle'
-                      )} /> {/* Centered dot */}
+                      <div className={cn("h-[6px] w-[6px] rounded-full bg-foreground-muted", disabled && "!bg-foreground-subtle")} />
                     </div>
                   );
                 })}
               </div>
             )}
           </SliderPrimitive.Track>
-          <SliderPrimitive.Thumb className={cn("block h-5 w-5 rounded-full border-2 border-primary bg-background ring-offset-background transition-colors focus-visible:outline-none focus-visible:bg-surface-backgroundAccent disabled:pointer-events-none disabled:opacity-50", disabled && '!border-foreground-muted')} />
+          <SliderPrimitive.Thumb
+            className={cn(
+              "block h-5 w-5 rounded-full border-2 border-primary bg-background ring-offset-background transition-colors focus-visible:outline-none focus-visible:bg-surface-backgroundAccent disabled:pointer-events-none disabled:opacity-50",
+              disabled && "!border-foreground-muted"
+            )}
+          />
         </SliderPrimitive.Root>
 
-        {/* Labels below each mark */}
         {marks.length > 0 && (
           <div className="relative w-full mt-3 flex justify-between pointer-events-none">
             {marks.map((mark) => {

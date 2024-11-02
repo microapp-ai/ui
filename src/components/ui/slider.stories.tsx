@@ -5,9 +5,19 @@ import { Slider } from "./slider";
 export default {
   title: "Components/Slider",
   component: Slider,
+  parameters: {
+    backgrounds: {
+      default: "light",
+      values: [
+        { name: "light", value: "#ffffff" },
+        { name: "dark", value: "#000000" },
+      ],
+    },
+  },
   argTypes: {
     width: { control: "text" },
     label: { control: "text" },
+    description: { control: "text" },
   },
 } as Meta;
 
@@ -21,18 +31,21 @@ Default.args = {
   step: 1,
   defaultValue: [50],
   label: "Default Slider",
+  description: "This is the default slider without any marks.",
+  width:"430px",
   showValue: true,
 };
 
 // Slider with Custom Width
-export const CustomWidth = Template.bind({});
-CustomWidth.args = {
+export const CustomRange = Template.bind({});
+CustomRange.args = {
   min: 0,
   max: 100,
   step: 5,
   defaultValue: [50],
-  width: "400px",
+  width: "430px",
   label: "Custom Width Slider",
+  description: "Slider with a custom width of 400px.",
   showValue: true,
 };
 
@@ -40,10 +53,11 @@ CustomWidth.args = {
 export const WithMarks = Template.bind({});
 WithMarks.args = {
   min: 0,
-  // max: 100,
+  max: 100,
   step: 25,
-  // defaultValue: [50],
+  defaultValue: [50],
   label: "Slider with Marks",
+  description: "This slider has custom marks with labels.",
   marks: [
     { value: 0, label: "Low" },
     { value: 25, label: "Mid-Low" },
@@ -51,7 +65,7 @@ WithMarks.args = {
     { value: 75, label: "Mid-High" },
     { value: 100, label: "High" },
   ],
-  width: "300px",
+  width: "430px",
   showValue: true,
 };
 
@@ -59,11 +73,11 @@ WithMarks.args = {
 export const Disabled = Template.bind({});
 Disabled.args = {
   min: 0,
-  // max: 100,
+  max: 100,
   defaultValue: [50],
   step: 25,
-  // defaultValue: [50],
-  label: "Slider with Marks",
+  label: "Disabled Slider with Marks",
+  description: "This slider is disabled and includes marks.",
   marks: [
     { value: 0, label: "Low" },
     { value: 25, label: "Mid-Low" },
@@ -71,9 +85,9 @@ Disabled.args = {
     { value: 75, label: "Mid-High" },
     { value: 100, label: "High" },
   ],
-  width: "300px",
+  width: "430px",
   showValue: true,
-  disabled:true,
+  disabled: true,
 };
 
 // Slider with Step of 20
@@ -84,7 +98,8 @@ StepSlider.args = {
   step: 20,
   defaultValue: [40],
   label: "Slider with Step of 20",
-  width: "250px",
+  description: "This slider increments in steps of 20.",
+  width: "430px",
   showValue: true,
 };
 
@@ -96,16 +111,16 @@ DarkMode.args = {
   step: 10,
   defaultValue: [70],
   label: "Dark Mode Slider",
+  description: "Slider styled for dark mode, with marks and labels.",
   marks: [
     { value: 0, label: "Start" },
     { value: 50, label: "Middle" },
     { value: 100, label: "End" },
   ],
-  width: "300px",
+  width: "430px",
   showValue: true,
-  className: "dark"
+  className: "dark",
 };
 DarkMode.parameters = {
   backgrounds: { default: "dark" },
 };
-
