@@ -143,7 +143,6 @@ export const FileUpload: React.FC<FileUploadProps> = ({
         </>
 
         )}
-
       </div>
       {/* Error message */}
       {error && <p className="text-red-500 text-sm mt-2">{error}</p>}

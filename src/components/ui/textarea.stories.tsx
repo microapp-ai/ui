@@ -118,7 +118,6 @@ Disabled.args = {
   description: "This input is disabled.",
   rows: 5,
   width: '430px',
-
   variant: "default",
 };
 

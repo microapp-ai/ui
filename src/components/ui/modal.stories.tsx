@@ -52,7 +52,6 @@ export const Default: Story = () => {
     </>
   );
 };
-
 // Modal in dark mode
 export const DarkMode: Story = () => {
   const [opened, setOpened] = useState(false);
@@ -72,9 +71,6 @@ export const DarkMode: Story = () => {
     </div>
   );
 };
-DarkMode.args = {
-
-}
 DarkMode.parameters = {
   backgrounds: { default: "dark" },
 };
