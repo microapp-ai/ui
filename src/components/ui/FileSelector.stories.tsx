@@ -58,7 +58,7 @@ Clearable.args = {
   label: "Upload File",
   description: "You can clear the selected file.",
   clearable: true,
-  width: "100%", // Custom width to span full width
+  width: "430px", // Custom width to span full width
 };
 
 // FileSelector with Custom Placeholder
@@ -68,7 +68,7 @@ WithPlaceholder.args = {
   label: "Profile Picture",
   description: "Upload your profile picture.",
   placeholder: "Choose a picture...",
-  width: "350px", // Custom width for placeholder variant
+  width: "430px", // Custom width for placeholder variant
 };
 
 // Disabled FileSelector
@@ -78,7 +78,7 @@ Disabled.args = {
   label: "Disabled File Selector",
   description: "This file selector is disabled.",
   disabled: true,
-  width: "280px", // Custom width for disabled variant
+  width: "430px", // Custom width for disabled variant
 };
 
 // FileSelector with Error State
@@ -90,7 +90,7 @@ FileSelectorWithError.args = {
   error: "File format not supported", // Error message
   clearable: true,
   formats: ["image/png", "image/jpeg"],
-  width: "320px", // Custom width with error
+  width: "430px", // Custom width with error
 };
 
 // Filled Variant FileSelector
@@ -100,7 +100,7 @@ FilledVariant.args = {
   label: "Upload File",
   description: "This is the filled variant.",
   variant: "filled",
-  width: "300px", // Custom width for filled variant
+  width: "430px", // Custom width for filled variant
 };
 
 // FileSelector with Format Restrictions
@@ -110,5 +110,5 @@ WithFormatRestrictions.args = {
   label: "Upload Image",
   description: "Accepted formats: PNG, JPEG",
   formats: ["image/png", "image/jpeg"],
-  width: "340px", // Custom width with format restrictions
+  width: "430px", // Custom width with format restrictions
 };
