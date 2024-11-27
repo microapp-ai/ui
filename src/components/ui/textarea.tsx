@@ -12,9 +12,9 @@ export interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextArea
 const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
   ({ className, label, description, error, variant = "default",width, ...props }, ref) => {
     return (
-      <div className={cn("flex flex-col gap-1",className)} style={{width}}>
-        {label && <label className={`text-md  font-bold text-foreground mb-[${description ? '4px' : '12px'}]`}>{label}</label>}
-        {description  && <p className={`text-sm text-muted-foreground mb-[12px]`}>{description}</p>}
+      <div className={cn("flex flex-col gap-0",className)} style={{width}}>
+        {label && <label className={cn(`text-md  font-bold text-foreground`,!description && 'mb-3')}>{label}</label>}
+        {description  && <p className={`text-sm text-muted-foreground mt-[4px] mb-[12px]`}>{description}</p>}
         <textarea
           className={cn(
             "flex min-h-[80px] w-full rounded-md px-3 py-2 text-sm  text-foreground  text-md placeholder:text-muted-foreground placeholder:text-lg focus-visible:outline-none focus-visible:border-2 focus-visible:border-foreground-actionable disabled:cursor-not-allowed disabled:bg-surface-muted",

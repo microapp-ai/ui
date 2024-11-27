@@ -11,20 +11,21 @@ body,
 @layer base {
   :root {
     --background: 0 0% 100%;
+
     /* foreground */
-    --foreground: 240, 2%, 8%;
-    --foreground-border: 240, 4%, 78%;
+    --foreground: 240, 5%, 4%;
+    --foreground-border: 240, 4%, 82%;
     --foreground-focus-ring: 224, 80%, 52%;
     --foreground-onactionable-destructive: 0, 0%, 100%;
     --foreground-accent: 240, 6%, 10%;
-    --foreground-onactionable-secondary: 240, 2%, 8%;
+    --foreground-onactionable-secondary: 240, 6%, 10%;
     --foreground-onactionable-primary: 0, 0%, 100%;
-    --foreground-muted: 240, 4%, 58%;
-    --foreground-subtle: 240, 3%, 68%;
+    --foreground-muted: 240, 4%, 49%;
+    --foreground-subtle: 240, 4%, 71%;
     --foreground-trio-primary: 220, 95%, 44%;
     --foreground-rating-star: 48, 96%, 53%;
     --foreground-hover-actionable: 224, 80%, 59%;
-    --foreground-hover-border: 240, 5%, 88%;
+    --foreground-hover-border: 240, 4%, 91%;
     --foreground-active-actionable: 224, 80%, 48%;
     --foreground-actionable: 224, 80%, 52%;
     --foreground-status-warningsecondary: 21, 90%, 48%;
@@ -39,23 +40,23 @@ body,
     /* surface */
     --surface-hoveractionable-destructive: 0, 72%, 51%;
     --surface-actionable-destructive: 0, 84%, 60%;
-    --surface-accent: 240, 4%, 78%;
-    --surface-hoveractionable-secondary: 240, 5%, 88%;
-    --surface-actionable-secondary: 240, 3%, 93%;
+    --surface-accent: 240, 4%, 82%;
+    --surface-hoveractionable-secondary: 240, 4%, 82%;
+    --surface-actionable-secondary: 240, 4%, 91%;
     --surface-actionable-primary: 0, 0%, 0%;
     --surface-hoveractionable-primary: 224, 80%, 48%;
-    --surface-muted: 240, 5%, 88%;
+    --surface-muted: 240, 4%, 91%;
     --surface-background-primary: 0, 0%, 100%;
-    --surface-background-secondary: 240, 3%, 93%;
+    --surface-background-secondary: 240, 5%, 96%;
     --surface-background-tertiary: 240, 5%, 88%;
-    --surface-background-quaternary: 240, 4%, 78%;
+    --surface-background-quaternary: 240, 4%, 91%;   
     --surface-background-accent: 224, 79%, 91%;
     --surface-active-actionableprimary: 224, 80%, 40%;
-    --surface-active-actionablesecondary: 240, 4%, 78%;
+    --surface-active-actionablesecondary: 240, 4%, 71%;
     --surface--appicon-blue: 224, 80%, 56%;
     --surface--appicon-orange: 26, 100%, 56%;
     --surface-active-actionabledestructive: 0, 74%, 42%;
-    --surface-status-neutralprimary: 240, 5%, 88%;
+    --surface-status-neutralprimary: 240, 4%, 91%;
     --surface-status-warningsecondary: 21, 90%, 48%;
 
     --card: 0 0% 100%;
@@ -88,50 +89,64 @@ body,
   .dark {
     /* foreground */
     --background: 0 0% 3.9%;
-    --foreground: 240, 3%, 93%;
-    --foreground-focus-ring: 224, 80%, 59%;
+    --foreground: 240, 5%, 96%;
+    --foreground-focus-ring: 224, 81%, 72%;
     --foreground-onactionable-destructive: 0, 0%, 100%;
-    --foreground-accent: 0 0% 100%;
-    --foreground-onactionable-secondary: 240, 4%, 58%;
+    --foreground-accent: 240 4% 91%;
+    --foreground-onactionable-secondary: 240, 4%, 91%;
     --foreground-onactionable-primary: 0, 0%, 0%;
     --foreground-border: 240, 4%, 18%;
-    --foreground-muted: 240, 4%, 48%;
+    --foreground-muted: 240, 4%, 49%;
     --foreground-subtle: 240, 3%, 28%;
     --foreground-actionable: 224, 81%, 72%;
     --foreground-trio-primary: 220, 73%, 77%;
-    --foreground-rating-star: 48, 96%, 53%;
+    --foreground-rating-star: 45, 93%, 47%;
     --foreground-hover-actionable: 224, 79%, 81%;
-    --foreground-hover-border: 240, 2%, 8%;
+    --foreground-hover-border: 240, 6%, 10%;
     --foreground-active-actionable: 224, 80%, 59%;
     --foreground-status-warningsecondary: 27, 96%, 61%;
     --foreground-destructive: 0, 84%, 60%;
     --foreground-status-positivesecondary: 83, 78%, 55%;
     --foreground-status-errorsecondary: 0, 91%, 71%;
     --foreground-status-infosecondary: 198, 93%, 60%;
-    --foreground-status-neutralsecondary: 240, 4%, 58%;
+    --foreground-status-neutralsecondary: 240, 4%, 60%;
     --foreground-muted-accent: 224, 80%, 59%;
-    --foreground-muted-highercontrast: 240, 4%, 58%;
+    --foreground-muted-highercontrast: 240, 4%, 60%;
 
     /* surface */
-    --surface-hoveractionable-destructive: 0, 72%, 51%;
-    --surface-actionable-destructive: 0, 70%, 35%;
+    --surface-hoveractionable-destructive: 0, 70%, 35%;
+    --surface-actionable-destructive: 0, 74%, 42%;
     --surface-accent: 240, 3%, 28%;
     --surface-hoveractionable-secondary: 240, 4%, 18%;
-    --surface-actionable-secondary: 240, 2%, 8%;
+    --surface-actionable-secondary: 240, 6%, 10%;
     --surface-hoveractionable-primary: 224, 79%, 81%;
-    --surface-actionable-primary: 0, 0%, 0%;
+
+    --surface-actionable-primary: 0, 0%, 100%;
+
     --surface-muted: 240, 4%, 18%;
+
     --surface-background-primary: 0, 0%, 0%;
-    --surface-background-secondary: 240, 2%, 8%;
-    --surface-background-tertiary: 240, 2%, 8%;
+
+    --surface-background-secondary: 240, 5%, 4%;
+
+    --surface-background-tertiary: 240, 6%, 10%;
+
     --surface-background-quaternary: 240, 4%, 18%;
+
     --surface-background-accent: 224, 80%, 40%;
-    --surface-active-actionableprimary: 224, 80%, 52%;
+
+    --surface-active-actionableprimary: 224, 81%, 72%;
+
     --surface-active-actionablesecondary: 240, 3%, 28%;
+
     --surface-appicon-blue: 224, 80%, 56%;
+
     --surface-appicon-orange: 26, 100%, 56%;
+
     --surface-active-actionabledestructive: 0, 74%, 42%;
-    --surface-status-neutralprimary: 240, 2%, 8%;
+
+    --surface-status-neutralprimary: 240, 6%, 10%;
+    
     --surface-status-warningsecondary: 27, 96%, 61%;
 
     --card: 0 0% 3.9%;

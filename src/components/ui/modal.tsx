@@ -31,7 +31,7 @@ const Modal: React.FC<ModalProps> = ({ opened, onClose, title, children, classNa
           )}
         >
           <div className="flex justify-between items-center mb-4">
-            <DialogPrimitive.Title className="text-lg font-semibold">
+            <DialogPrimitive.Title className="text-lg font-semibold text-foreground">
               {title}
             </DialogPrimitive.Title>
             {withCloseButton && (<DialogPrimitive.Close

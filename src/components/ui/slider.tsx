@@ -10,7 +10,7 @@ interface Mark {
 interface SliderProps extends React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root> {
   width?: string | number;
   label?: string;
-  description?: string; // New description prop
+  description?: string;
   marks?: Mark[];
   showValue?: boolean;
   disabled?: boolean;
@@ -22,17 +22,39 @@ const Slider = React.forwardRef<
 >(({ className, width, label, description, marks = [], showValue, disabled, ...props }, ref) => {
   // State to hold the current slider value
   const [sliderValue, setSliderValue] = React.useState<number[]>(props.defaultValue ?? [0]);
+  const [isActive, setIsActive] = React.useState(false); // State to track if thumb is clicked
+  const [isDragging, setIsDragging] = React.useState(false); // State to track if thumb is being dragged
 
   const handleValueChange = (value: number[]) => {
     setSliderValue(value);
     if (props.onValueChange) props.onValueChange(value);
   };
 
+  // Start drag
+  const handlePointerDown = () => {
+    setIsActive(true);
+    setIsDragging(true);
+  };
+
+  // End drag
+  const handlePointerUp = () => {
+    setIsActive(false);
+    setIsDragging(false);
+  };
+
+  const handleClickOnTrack = () => {
+    // Briefly activate the thumb color on clicking the track
+    setIsActive(true);
+    setTimeout(() => {
+      setIsActive(false);
+    }, 150); // Change color for 150ms on click
+  };
+
   return (
-    <div style={{ width }} className={cn("flex flex-col gap-0",className)}>
+    <div style={{ width }} className={cn("flex flex-col gap-0", className)}>
       {label && (
         <label className="text-md font-bold text-foreground my-0 py-0">
-          {label} {showValue && <span>: {sliderValue[0]}</span>}
+          {label} {showValue && <span className="font-medium">: {sliderValue[0]}</span>}
         </label>
       )}
       {description && (
@@ -47,10 +69,21 @@ const Slider = React.forwardRef<
           className="relative flex w-full touch-none select-none items-center"
           value={sliderValue}
           onValueChange={handleValueChange}
+          onPointerDown={(e) => {
+            handleClickOnTrack();
+            handlePointerDown();
+          }} // Handle pointer down on track
+          onPointerUp={handlePointerUp}
+          onPointerMove={() => {
+            if (isDragging) setIsActive(true);
+          }} // Keep color change during dragging
           {...props}
           disabled={disabled}
         >
-          <SliderPrimitive.Track className="relative h-[8px] w-full rounded-full bg-surface-actionableSecondary">
+          <SliderPrimitive.Track
+            className="relative h-[8px] w-full rounded-full bg-surface-actionableSecondary"
+            onClick={handleClickOnTrack} // Handle click on track to change color
+          >
             <SliderPrimitive.Range
               className={cn("absolute h-full bg-primary rounded-lg", disabled && "!bg-foreground-muted")}
             />
@@ -77,7 +110,8 @@ const Slider = React.forwardRef<
           </SliderPrimitive.Track>
           <SliderPrimitive.Thumb
             className={cn(
-              "block h-5 w-5 rounded-full border-2 border-primary bg-background ring-offset-background transition-colors focus-visible:outline-none focus-visible:bg-surface-backgroundAccent disabled:pointer-events-none disabled:opacity-50",
+              "block h-5 w-5 rounded-full border-2 border-primary bg-background ring-offset-background transition-colors focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50",
+              isActive || isDragging ? "bg-surface-backgroundAccent" : "bg-background",
               disabled && "!border-foreground-muted"
             )}
           />
