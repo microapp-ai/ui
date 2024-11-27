@@ -7,6 +7,15 @@ import { IconLock, IconNumber123, IconSearch } from "@tabler/icons-react";
 export default {
   title: "Components/Input",
   component: Input,
+  parameters: {
+    backgrounds: {
+      default: "light",
+      values: [
+        { name: "light", value: "#ffffff" },
+        { name: "dark", value: "#000000" },
+      ],
+    },
+  },
   argTypes: {
     type: {
       control: { type: "select" },
@@ -60,6 +69,17 @@ Default.args = {
   placeholder: "Enter text...",
   label: "Default Input",
   description: "This is a default input field.",
+};
+export const DarkMode = Template.bind({});
+DarkMode.args = {
+  className: "dark",
+  type: "text",
+  placeholder: "Enter text...",
+  label: "Default Input",
+  description: "This is a default input field.",
+};
+DarkMode.parameters = {
+  backgrounds: { default: "dark" },
 };
 
 // Password input with right icon

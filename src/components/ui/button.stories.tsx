@@ -4,6 +4,15 @@ import { Button, ButtonProps } from "./button";
 const storyConfig: Meta<ButtonProps> = {
   title: "Components/Button",
   component: Button,
+  parameters: {
+    backgrounds: {
+      default: "light",
+      values: [
+        { name: "light", value: "#ffffff" },
+        { name: "dark", value: "#000000" },
+      ],
+    },
+  },
   argTypes: {
     variant: {
       control: {

@@ -15,17 +15,17 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ className, type, label, description, leftIcon, rightIcon, error, errorMessage, width, ...props }, ref) => {
     return (
-      <div className="relative flex flex-col w-full" style={{ width }}>
+      <div className={cn("relative flex flex-col w-full",className)} style={{ width }}>
         {label && (
-          <label className={cn("text-md font-medium text-foreground mb-1",
-            error ? "text-destructive" : "text-foreground"
+          <label className={cn(`text-md font-bold text-foreground mb-[${description ? '4px' : '12px'}]`,
+            "text-foreground"
           )}>
             {label}
           </label>
         )}
         {description &&  (
-          <span className={cn("text-sm text-muted-foreground mt-[4px] mb-[12px]",
-            error ? "text-destructive" : "text-muted-foreground"
+          <span className={cn("text-sm text-muted-foreground mb-[12px]",
+            "text-muted-foreground"
           )}>{description}</span> // Show description if no error
         )}
         <div className="relative flex items-center w-full">
@@ -37,12 +37,12 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           <input
             type={type}
             className={cn(
-              `flex h-10 w-full rounded-md border bg-background px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground`,
-              `focus-visible:outline-2 focus-visible:outline-destructive focus-visible:outline-offset-2 `,
+              `flex h-10 w-full rounded-md border bg-background px-3 py-2 text-sm text-foreground file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground`,
+              `focus-visible:!outline-none focus-visible:border-2 focus-visible:border-ring`,
               `disabled:cursor-not-allowed disabled:bg-muted`,
               leftIcon && "pl-10", // Add padding if left icon is present
               rightIcon && "pr-10", // Add padding if right icon is present
-              error ? "border-destructive focus-visible:outline focus-visible:outline-2 focus-visible:outline-destructive focus-visible:outline-offset-2" : "border-input", // Apply error border if error is true
+              error ? "border-destructive focus-visible:!outline-none placeholder:text-foreground-statusErrorSecondary" : "border-input", // Apply error border if error is true
               className
             )}
             ref={ref}
