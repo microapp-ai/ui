@@ -4,7 +4,6 @@ import { Modal } from "./modal";
 import { Button } from "./button";
 import { cn } from "@/utils";
 
-
 export default {
   title: "Components/Modal",
   component: Modal,
@@ -24,31 +23,30 @@ const Template: Story = (args) => {
   const [opened, setOpened] = useState(false);
 
   const openModal = () => setOpened(true);
-  const closeModal = () => {
-    setOpened(false);
-    args.onClose?.(); // Call the onClose passed from Storybook args
-  };
-
+  const closeModal = () => setOpened(false);
 
   return (
-    <div className={cn("flex flex-col gap-4",args.className)}>
+    <div className={cn("flex flex-col gap-4", args.className)}>
       <Button onClick={openModal}>Open Modal</Button>
       <Modal opened={opened} onClose={closeModal} {...args}>
-        {args.children}
+        {typeof args.children === "function"
+          ? args.children({ closeModal })
+          : args.children}
       </Modal>
     </div>
   );
 };
+
 // Default modal with title and close button
 export const Default = Template.bind({});
 Default.args = {
   title: "Default Modal",
-  children: (
+  children: ({ closeModal }: { closeModal: () => void }) => (
     <>
       <p className="text-foreground-muted">This is a default modal with a close button and a title.</p>
       <div className="mt-[24px] flex gap-2 justify-end">
-        <Button onClick={() => Default.args?.onClose?.()}>OK</Button>
-        <Button variant="secondary" onClick={() => Default.args?.onClose?.()}>Close</Button>
+        <Button onClick={closeModal}>OK</Button>
+        <Button variant="secondary" onClick={closeModal}>Close</Button>
       </div>
     </>
   ),
@@ -58,12 +56,12 @@ Default.args = {
 export const DarkMode = Template.bind({});
 DarkMode.args = {
   title: <p className="text-foreground">DarkMode Modal</p>,
-  children: (
+  children: ({ closeModal }: { closeModal: () => void }) => (
     <>
-      <p className="text-foreground-muted">This is a default modal with a close button and a title.</p>
-      <div className="mt-[24px] flex gap-2">
-        <Button onClick={() => DarkMode.args?.onClose?.()}>OK</Button>
-        <Button variant="secondary" onClick={() => DarkMode.args?.onClose?.()}>Close</Button>
+      <p className="text-foreground-muted">This is a dark mode modal with a close button and a title.</p>
+      <div className="mt-[24px] flex gap-2 justify-end">
+        <Button onClick={closeModal}>OK</Button>
+        <Button variant="secondary" onClick={closeModal}>Close</Button>
       </div>
     </>
   ),
@@ -72,58 +70,32 @@ DarkMode.parameters = {
   backgrounds: { default: "dark" },
 };
 
-// Modal without a close button
-export const WithoutCloseButton = Template.bind({});
-WithoutCloseButton.args = {
-  title: <div className="">
-    <h2 className="text-lg font-semibold text-foreground">Modal without Close Button</h2>
-    <p className="text-sm text-muted-foreground">This modal does not have a close button.</p>
-  </div>,
-  children: (
-    <>
-      <p className="text-foreground">This modal does not have a close button. You can close it via external triggers.</p>
-      <Button variant={'outline'} className="my-4">
-        Close
-      </Button>
-    </>
-  ),
-  withCloseButton: false,
-};
 
 // Modal without a title
 export const WithoutTitle = Template.bind({});
 WithoutTitle.args = {
-  children: (
+  title: null,
+  children: ({ closeModal }: { closeModal: () => void }) => (
     <>
       <p className="text-foreground">This modal does not have a title.</p>
-      <Button variant={'outline'} className="my-4">
-        Close
-      </Button>
+      <Button variant="secondary" onClick={closeModal} className="mt-2">Close</Button>
     </>
   ),
-
 };
 
 // Modal with long content
 export const LongContent = Template.bind({});
 LongContent.args = {
   title: "Modal with Long Content",
-  children: (
+  children: ({ closeModal }: { closeModal: () => void }) => (
     <>
       <p className="text-foreground">This modal contains a lot of content to test scrolling behavior.</p>
-      <div
-        className="max-h-[400px] overflow-y-auto bg-surface-backgroundoutline my-4"
-      >
-        <div className="h-[800px] p-4  text-foreground-onActionableoutline">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate iste, veniam totam, error quae sunt quisquam, pariatur ducimus ea molestiae itaque perferendis aperiam nobis quam sint dignissimos eligendi necessitatibus in. Laborum facilis assumenda repellat voluptas unde perspiciatis at ab enim porro voluptatibus nulla amet delectus maiores labore hic vero ad non ipsam id, alias temporibus corporis dolore earum maxime. Beatae quod porro dolorem dolorum vero eum exercitationem voluptatem eos nihil quos, culpa sint deleniti doloremque temporibus nesciunt totam voluptate ratione perferendis architecto vitae iure vel facilis reprehenderit atque. Expedita iste perspiciatis quis beatae reprehenderit quaerat sint cum, est, vitae ab nesciunt consequuntur eaque. Accusamus asperiores assumenda magni modi ipsa minus rerum laudantium quaerat molestias, suscipit reiciendis quisquam. Maiores provident esse, reiciendis non sunt quae id modi recusandae laborum, sint dolore officiis consequuntur tempora neque nesciunt eos blanditiis veritatis numquam! Tenetur nesciunt alias eos magni voluptas ad modi sed ipsam culpa. Ea, quia. Reiciendis autem dolor rerum fuga maxime animi iusto illo, illum recusandae architecto eaque at voluptate modi iure quos, id repudiandae! Ipsa exercitationem velit possimus praesentium, laboriosam amet facere eligendi, suscipit autem officia in optio quos ratione aperiam deserunt illo provident accusamus culpa distinctio veniam consectetur vero! Nemo eveniet nesciunt neque, quae illo ad repellendus hic iste incidunt omnis quo quis praesentium ea blanditiis dicta, aliquid fuga recusandae nam nostrum minima tempora quia eligendi! Dolorum modi recusandae non et porro perferendis eveniet, consequatur deleniti inventore nesciunt! Aperiam hic beatae eligendi necessitatibus quod. Adipisci ducimus ipsa quos autem deserunt consectetur, quas ut, dignissimos dolorem architecto cupiditate quasi distinctio possimus cumque ab, omnis excepturi temporibus perferendis nisi unde amet neque. Cupiditate ipsam animi, obcaecati odio, a quo aperiam sit magni mollitia ea deserunt? Quod ipsum quia esse? Facilis quas, excepturi eligendi mollitia, quisquam eius ipsam laboriosam, aspernatur voluptatibus quod ullam molestias voluptates doloremque quae? Rem ipsam cumque quaerat dolor sapiente dolorum hic tempore culpa? Quasi est porro alias, pariatur sint dicta tempore rem sit eius velit ipsa fuga hic in iusto assumenda numquam adipisci error asperiores unde facilis dolor quo doloribus ratione illo? Corrupti illo consectetur, illum facilis veniam est quidem hic dignissimos aspernatur maiores voluptatum labore mollitia numquam quibusdam ut, culpa vitae quo cum? Odit veritatis ut, aut perferendis consequuntur nostrum rem cupiditate dolorum, maxime laudantium sapiente amet sunt enim ea, pariatur quis at architecto perspiciatis neque repellendus? Voluptatem fugiat vitae enim necessitatibus optio maiores ducimus consequuntur rem architecto aliquam laborum sint nostrum sapiente, suscipit modi error quam eligendi rerum nobis? Voluptatibus in id recusandae, qui placeat molestias ipsa deleniti exercitationem nihil architecto. Dolorum suscipit obcaecati voluptas tempora aperiam iure quibusdam, sequi ex ad optio hic amet dicta sint et dolores architecto officia veritatis quo quisquam? Facilis, saepe. Error non adipisci eligendi laudantium officia possimus dolor suscipit rem quibusdam, ex, quae in voluptas nulla necessitatibus dolores omnis impedit unde illo iste. Fugiat consectetur nulla, itaque, odio vero velit corrupti maxime necessitatibus aliquid, quas ab pariatur autem quae? Esse consequuntur rerum soluta commodi vel, iste, necessitatibus officiis illum impedit, aspernatur omnis?
+      <div className="max-h-[400px] overflow-y-auto bg-surface-background mt-4">
+        <div className="h-[800px] p-4 text-foreground">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum mollitia perspiciatis sit, quis veniam ex? Quae harum aliquid iste corporis saepe dolore suscipit quaerat quibusdam culpa alias? Neque totam natus dolore soluta rem nisi nemo nobis recusandae magnam libero hic exercitationem harum, consequatur excepturi fugit unde. Ducimus voluptas, ex molestiae quia reiciendis nostrum iusto veniam dignissimos assumenda voluptatibus porro, inventore cupiditate veritatis, officia tenetur dolor commodi laboriosam doloribus esse. Repellat repellendus dolore molestias velit doloremque iusto nobis nostrum at voluptate accusamus, ab cumque fuga unde laborum voluptates tempore eum tenetur dolores dolorum itaque accusantium. Rem excepturi tempore culpa ipsum, neque unde et earum ut facere cumque rerum optio dolorum alias asperiores nobis, odio quos consequuntur. Alias error maxime dicta fugiat quaerat quidem iure, ratione et deserunt tempore aspernatur aliquam explicabo inventore, odit quam enim in magnam saepe necessitatibus doloremque consectetur eum ut adipisci? Minus perspiciatis, sapiente est, nemo libero debitis odio natus velit deleniti, aperiam magni impedit molestiae perferendis praesentium sunt voluptatibus nulla suscipit beatae minima commodi! Vel quod adipisci quos, voluptates excepturi officia velit aperiam iure eveniet sunt quaerat est rerum alias nostrum rem incidunt debitis sint. Nobis tempora temporibus officiis dolor nostrum vitae cumque labore voluptate. Cupiditate, adipisci veritatis libero tenetur ducimus inventore perferendis eaque ipsam saepe tempore accusamus recusandae! Cumque magni nemo impedit! Facilis id porro dolore temporibus quae neque quasi aliquid modi at eum, consequuntur eius quo cum labore aut vitae quia velit illo! Incidunt, repellendus architecto? Similique, quam est asperiores doloremque voluptatum, ab quas recusandae assumenda vitae sed unde impedit mollitia accusantium libero! Nulla ullam numquam saepe ipsa iure recusandae sed, ex officiis, assumenda eveniet consectetur quis ut fugiat quaerat praesentium architecto asperiores rerum doloribus aut nemo officia! Dicta numquam dolorum quisquam. Eum consectetur exercitationem soluta dignissimos laborum delectus iste! Magni quos nihil animi eius.
         </div>
       </div>
-      <Button variant={'outline'}>
-        Close
-      </Button>
+      <Button variant="secondary" onClick={closeModal} className="my-2">Close</Button>
     </>
   ),
 };
-
-
-

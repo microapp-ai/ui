@@ -29,7 +29,7 @@ export const FileSelector: React.FC<FileSelectorProps> = ({
   width = "280px", // Default width
   className
 }) => {
-  const [fileName, setFileName] = React.useState(placeholder);
+  const [fileName, setFileName] = React.useState("");
   const fileInputRef = React.useRef<HTMLInputElement | null>(null);
   const inputRef = React.useRef<HTMLInputElement | null>(null); // Reference to the text input
   const [isFocused, setIsFocused] = React.useState(false);
@@ -95,7 +95,7 @@ export const FileSelector: React.FC<FileSelectorProps> = ({
           onClick={triggerFileInput}
           disabled={disabled}
           className={cn(
-            "rounded-full h-fit py-[7px] px-[18px] mr-[10px] font-bold text-md  bg-surface-actionableSecondary text-foreground",
+            "rounded-full h-fit py-[7px] px-[18px] mr-[10px] font-[600] text-md  bg-surface-actionableSecondary text-foreground-onActionableSecondary",
             variant === "filled" && "bg-surface-backgroundSecondary", "disabled:!bg-surface-actionableSecondary disabled:!opacity-100",
             !disabled && "hover:!bg-surface-hoverActionableSecondary",
           )}
@@ -110,11 +110,12 @@ export const FileSelector: React.FC<FileSelectorProps> = ({
           onClick={triggerFileInput}
           disabled={disabled}
           className={cn(
-            "!bg-transparent !border-0 text-foreground-muted pl-[16px]",
-            // variant === "filled" && "bg-surface-backgroundSecondary hover:bg-surface-backgroundSecondary", // Make input background match in 'filled' variant,
+            "!bg-transparent !border-0 text-foreground pl-[16px]",
+            "placeholder:text-foreground-muted",
             "focus-visible:!outline-none",
             error && "text-foreground-statusErrorSecondary"
           )}
+          placeholder={placeholder}
           ref={inputRef}
         />
 
