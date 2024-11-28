@@ -16,36 +16,33 @@ const storyConfig: Meta<ButtonProps> = {
     },
   },
   argTypes: {
-    variant: {
-      control: {
-        type: "select",
-        options: [
-          "default",
-          "destructive",
-          "outline",
-          "secondary",
-          "ghost",
-          "ghost-destructive",
-          "link",
-        ],
-        defaultValue: "default",
-      },
-    },
-    size: {
-      control: {
-        type: "select",
-        options: ["default", "sm", "lg", "icon"],
-      },
-    },
+    // variant: {
+    //   control: {
+    //     type: "select",
+    //     options: [
+    //       "default",
+    //       "destructive",
+    //       "outline",
+    //       "secondary",
+    //       "ghost",
+    //       "ghost-destructive",
+    //       "link",
+    //     ],
+    //     defaultValue: "default",
+    //   },
+    // },
+    // size: {
+    //   control: {
+    //     type: "select",
+    //     options: ["default", "sm", "lg", "icon"],
+    //   },
+    // },
     disabled: {
       control: "boolean",
     },
     onClick: { action: "clicked" },
     children: {
       control: "text",
-    },
-    icon: {
-      control: "select",
     },
   },
   args: {
@@ -66,7 +63,18 @@ Default.args = {
   size: "default",
 };
 
-
+export const Outline = Template.bind({});
+Outline.args = {
+  className: "",
+  variant: "outline",
+  size: "default",
+};
+export const Subtle = Template.bind({});
+Subtle.args = {
+  className: "",
+  variant: "subtle",
+  size: "default",
+};
 
 
 export const Destructive = Template.bind({});
@@ -77,21 +85,7 @@ Destructive.args = {
   size: "default",
 };
 
-export const Outline = Template.bind({});
-Outline.args = {
-  className: "",
 
-  variant: "outline",
-  size: "default",
-};
-
-export const Secondary = Template.bind({});
-Secondary.args = {
-  className: "",
-
-  variant: "secondary",
-  size: "default",
-};
 
 export const Ghost = Template.bind({});
 Ghost.args = {
@@ -101,6 +95,7 @@ Ghost.args = {
   size: "default",
 };
 
+
 export const GhostDestructive = Template.bind({});
 GhostDestructive.args = {
   className: "",
@@ -108,12 +103,12 @@ GhostDestructive.args = {
   size: "default",
 };
 
-export const Link = Template.bind({});
-Link.args = {
-  className: "",
-  variant: "link",
-  size: "default",
-};
+// export const Link = Template.bind({});
+// Link.args = {
+//   className: "",
+//   variant: "link",
+//   size: "default",
+// };
 
 export const Large = Template.bind({});
 Large.args = {
@@ -125,7 +120,6 @@ Large.args = {
 export const Small = Template.bind({});
 Small.args = {
   className: "",
-
   variant: "default",
   size: "sm",
 };
@@ -133,7 +127,6 @@ Small.args = {
 export const IconButton = Template.bind({});
 IconButton.args = {
   className: "",
-
   variant: "default",
   size: "icon",
   children: "🔍",
@@ -142,7 +135,6 @@ IconButton.args = {
 export const WithIcon = Template.bind({});
 WithIcon.args = {
   className: "",
-
   variant: "default",
   size: "default",
   icon: <IconBolt />,

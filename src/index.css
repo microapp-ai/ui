@@ -115,7 +115,7 @@ body,
 
     /* surface */
     --surface-hoveractionable-destructive: 0, 70%, 35%;
-    --surface-actionable-destructive: 0, 74%, 42%;
+    --surface-actionable-destructive: 0, 63%, 31%;
     --surface-accent: 240, 3%, 28%;
     --surface-hoveractionable-secondary: 240, 4%, 18%;
     --surface-actionable-secondary: 240, 6%, 10%;
