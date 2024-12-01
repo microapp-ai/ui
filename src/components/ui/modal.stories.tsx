@@ -3,6 +3,10 @@ import { Meta, Story } from "@storybook/react";
 import { Modal } from "./modal";
 import { Button } from "./button";
 import { cn } from "@/utils";
+import { XIcon } from "lucide-react";
+import { Input } from "./input";
+import { Select } from "./select";
+
 
 export default {
   title: "Components/Modal",
@@ -45,8 +49,8 @@ Default.args = {
     <>
       <p className="text-foreground-muted">This is a default modal with a close button and a title.</p>
       <div className="mt-[24px] flex gap-2 justify-end">
-        <Button onClick={closeModal}>OK</Button>
-        <Button variant="secondary" onClick={closeModal}>Close</Button>
+        <Button variant="outline" onClick={closeModal}>Cancel</Button>
+        <Button variant="default" onClick={closeModal}>Confirm</Button>
       </div>
     </>
   ),
@@ -56,12 +60,13 @@ Default.args = {
 export const DarkMode = Template.bind({});
 DarkMode.args = {
   title: <p className="text-foreground">DarkMode Modal</p>,
+  className: 'dark',
   children: ({ closeModal }: { closeModal: () => void }) => (
     <>
       <p className="text-foreground-muted">This is a dark mode modal with a close button and a title.</p>
       <div className="mt-[24px] flex gap-2 justify-end">
-        <Button onClick={closeModal}>OK</Button>
-        <Button variant="secondary" onClick={closeModal}>Close</Button>
+        <Button variant="outline" onClick={closeModal}>Cancel</Button>
+        <Button variant="default" onClick={closeModal}>Confirm</Button>
       </div>
     </>
   ),
@@ -83,6 +88,18 @@ WithoutTitle.args = {
   ),
 };
 
+export const WithoutCloseButton = Template.bind({});
+WithoutCloseButton.args = {
+  title: "Modal without Close Button",
+  children: ({ closeModal }: { closeModal: () => void }) => (
+    <>
+      <p className="text-foreground">This modal does not have a close button.</p>
+      <Button variant="secondary" onClick={closeModal} className="mt-2">Close</Button>
+    </>
+  ),
+  withCloseButton: false,
+};
+
 // Modal with long content
 export const LongContent = Template.bind({});
 LongContent.args = {
@@ -99,3 +116,47 @@ LongContent.args = {
     </>
   ),
 };
+
+
+// Settings Modal
+
+export const SettingsModal = Template.bind({});
+SettingsModal.args = {
+  title: <div className="">
+    <div className="text-lg text-foreground font-[600]">Settings</div>
+    <div className="text-foreground-muted font-[400] mb-4">
+      This is a short description
+    </div>
+  </div>,
+  children: ({ closeModal }: { closeModal: () => void }) => (
+    <div className="w-full bg-surface-backgroundPrimary">
+      <Input
+        label="Page Url"
+        placeholder="Enter page url..."
+        value={"https://microapp.ai"}
+        className="mb-2"
+      />
+      <Select
+        label="Theme"
+        options={[
+          { label: "Light", value: "light" },
+          { label: "Dark", value: "dark" },
+        ]}
+        className="mb-8"
+      />
+      {/*divider*/ }
+      <div className="border-t border-foreground-border my-3"/>
+      <div className="mt-[24px] flex gap-2 justify-end">
+        <Button variant="outline" onClick={closeModal}>Cancel</Button>
+        <Button variant="default" onClick={closeModal}>Confirm</Button>
+      </div>
+
+
+    </div>
+  ),
+  closeButton: <Button size="icon" variant="outline">
+    <XIcon className="h-5 w-5" />
+  </Button>,
+  modalHeader: "bg-surface-backgroundSecondary"
+};
+
