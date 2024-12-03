@@ -5,7 +5,6 @@ import { ImageCarousel } from './ImageList'
 import { Button } from './button';
 import { cn } from "@/utils";
 
-
 const meta: Meta = {
   title: 'Components/FileUpload',
   component: FileUpload,
@@ -103,6 +102,7 @@ CustomDropzoneContent.args = {
 
 const ImageUploadTemplate: Story<FileUploadProps> = (args) => {
   const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
+  const [disabled, setDisabled] = useState(false);
 
   const handleFileDrop = (files: File[]) => {
     setUploadedFiles((prevFiles) => [...prevFiles, ...files]);

@@ -98,6 +98,7 @@ export const FileSelector: React.FC<FileSelectorProps> = ({
             "rounded-full h-fit py-[7px] px-[18px] mr-[10px] font-[600] text-md  bg-surface-actionableSecondary text-foreground-onActionableSecondary",
             variant === "filled" && "bg-surface-backgroundSecondary", "disabled:!bg-surface-actionableSecondary disabled:!opacity-100",
             !disabled && "hover:!bg-surface-hoverActionableSecondary",
+
           )}
         >
           Browse
