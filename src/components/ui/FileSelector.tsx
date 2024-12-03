@@ -1,6 +1,5 @@
 import * as React from "react";
 import { Label } from "@/components/ui/label";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/utils";
 import { IconX } from "@tabler/icons-react";
@@ -30,7 +29,7 @@ export const FileSelector: React.FC<FileSelectorProps> = ({
   width = "280px", // Default width
   className
 }) => {
-  const [fileName, setFileName] = React.useState(placeholder);
+  const [fileName, setFileName] = React.useState("");
   const fileInputRef = React.useRef<HTMLInputElement | null>(null);
   const inputRef = React.useRef<HTMLInputElement | null>(null); // Reference to the text input
   const [isFocused, setIsFocused] = React.useState(false);
@@ -64,7 +63,7 @@ export const FileSelector: React.FC<FileSelectorProps> = ({
   return (
     <div className={cn("flex flex-col gap-0", className)} style={{ width }}>
       {/* Label */}
-      <Label className={`text-md font-bold text-foreground mb-[${description ? '4px' : '12px'}]`}>{label}</Label>
+      <Label className={`text-md font-bold text-foreground ${description!=='' ? 'mb-1' : 'mb-3'}`}>{label}</Label>
 
       {/* Description */}
       {description && <p className="text-sm text-foreground-muted mb-[12px]">{description}</p>}
@@ -92,17 +91,18 @@ export const FileSelector: React.FC<FileSelectorProps> = ({
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
       >
-        <Button
+        <button
           onClick={triggerFileInput}
           disabled={disabled}
           className={cn(
-            "rounded-full h-fit py-[7px] px-[14px] mr-[10px] font-bold text-md  bg-surface-actionableSecondary text-foreground",
+            "rounded-full h-fit py-[7px] px-[18px] mr-[10px] font-[600] text-md  bg-surface-actionableSecondary text-foreground-onActionableSecondary",
             variant === "filled" && "bg-surface-backgroundSecondary", "disabled:!bg-surface-actionableSecondary disabled:!opacity-100",
-            !disabled && "hover:!bg-actionable-secondary-hover",
+            !disabled && "hover:!bg-surface-hoverActionableSecondary",
+
           )}
         >
           Browse
-        </Button>
+        </button>
 
         <Input
           type="text"
@@ -111,11 +111,12 @@ export const FileSelector: React.FC<FileSelectorProps> = ({
           onClick={triggerFileInput}
           disabled={disabled}
           className={cn(
-            "!bg-transparent !border-0 text-foreground-muted pl-[16px]",
-            // variant === "filled" && "bg-surface-backgroundSecondary hover:bg-surface-backgroundSecondary", // Make input background match in 'filled' variant,
+            "!bg-transparent !border-0 text-foreground pl-[16px]",
+            "placeholder:text-foreground-muted",
             "focus-visible:!outline-none",
-            error && "text-destructive"
+            error && "text-foreground-statusErrorSecondary"
           )}
+          placeholder={placeholder}
           ref={inputRef}
         />
 
@@ -129,19 +130,18 @@ export const FileSelector: React.FC<FileSelectorProps> = ({
           disabled={disabled}
         />
         {clearable && fileName !== placeholder && (
-          <Button
+          <button
             onClick={clearFileInput}
             className="text-actionable-secondary p-2 hover:bg-transparent hover:text-actionable-secondary"
-            variant="ghost"
             disabled={disabled}
           >
             <IconX size={18} />
-          </Button>
+          </button>
         )}
       </div>
 
       {/* Error Message */}
-      {error && <p className="text-sm text-destructive mt-1">{error}</p>}
+      {error && <p className="text-sm text-foreground-statusErrorSecondary mt-1">{error}</p>}
     </div>
   );
 };

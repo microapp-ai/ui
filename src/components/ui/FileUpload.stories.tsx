@@ -3,6 +3,8 @@ import { Meta, Story } from '@storybook/react';
 import { FileUpload, FileUploadProps } from './FileUpload';
 import { ImageCarousel } from './ImageList'
 import { Button } from './button';
+import { cn } from "@/utils";
+
 const meta: Meta = {
   title: 'Components/FileUpload',
   component: FileUpload,
@@ -98,8 +100,7 @@ CustomDropzoneContent.args = {
 };
 
 
-
-export const ImageUploadExample: React.FC = () => {
+const ImageUploadTemplate: Story<FileUploadProps> = (args) => {
   const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
   const [disabled, setDisabled] = useState(false);
 
@@ -107,18 +108,11 @@ export const ImageUploadExample: React.FC = () => {
     setUploadedFiles((prevFiles) => [...prevFiles, ...files]);
   };
 
-  useEffect(() => {
-    console.log("Uploaded Files", uploadedFiles)
-  }, [uploadedFiles])
-
   return (
-    <div>
+    <div className={cn(args.className)}>
       <FileUpload
-        label="Upload Your Files"
-        description="Drag and drop image files here or click to select files."
-        formats={['image/jpeg', 'image/png']}
+        {...args}
         onFileDrop={handleFileDrop}
-        width='430px'
       />
       <ImageCarousel
         images={uploadedFiles}
@@ -126,4 +120,12 @@ export const ImageUploadExample: React.FC = () => {
       />
     </div>
   );
+};
+
+export const ImageUploadWithCarousel = ImageUploadTemplate.bind({});
+ImageUploadWithCarousel.args = {
+  label: 'Upload Images',
+  description: 'Image Dropzone with Carousel',
+  width: '430px',
+  formats: ['image/jpeg', 'image/png'],
 };

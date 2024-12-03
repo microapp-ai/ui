@@ -90,13 +90,13 @@ export const FileUpload: React.FC<FileUploadProps> = ({
       <div
         {...getRootProps()}
         className={cn(
-          "border-[2px] border-dashed p-[16px] rounded-lg transition-colors duration-300 flex flex-col items-center justify-center gap-4 relative",
+          "p-[16px] rounded-lg transition-colors duration-300 flex flex-col items-center justify-center gap-4 relative",
           !disabled && "hover:border-ring hover:bg-muted",
           {
             "border-actionable-secondary-hover": !isDragActive && !error,
             "border-ring border-solid": isDragActive && !disabled,
-            "border-destructive hover:border-destructive": error,
-            "bg-background": !disabled,
+            "border-foreground-statusErrorSecondary hover:border-foreground-statusErrorSecondary": error,
+            "bg-background border-[2px] border-dashed": !disabled,
             "!bg-muted cursor-not-allowed": disabled,
           }
         )}
@@ -138,14 +138,16 @@ export const FileUpload: React.FC<FileUploadProps> = ({
             variant={'outline'}
             children={'Browse'}
             disabled={disabled}
-            className="font-bold !bg-transparent !border-[1px] !border-foreground-border text-foreground-accent"
+            className={cn("!bg-transparent text-foreground-accent",{
+              "border-foreground-subtle": disabled,
+            })}
           />
         </>
 
         )}
       </div>
       {/* Error message */}
-      {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
+      {error && <p className="text-foreground-statusErrorSecondary text-sm mt-2">{error}</p>}
     </div>
   );
 };

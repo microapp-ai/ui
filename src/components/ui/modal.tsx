@@ -10,9 +10,11 @@ interface ModalProps {
   children: React.ReactNode;
   className?: string;
   withCloseButton?: boolean;
+  closeButton?: React.ReactNode;
+  modalHeader?: string;
 }
 
-const Modal: React.FC<ModalProps> = ({ opened, onClose, title, children, className, withCloseButton = true }) => {
+const Modal: React.FC<ModalProps> = ({ opened, onClose, title, children, className, withCloseButton = true, closeButton = null, modalHeader }) => {
   return (
     <DialogPrimitive.Root open={opened} onOpenChange={onClose}
 
@@ -25,23 +27,30 @@ const Modal: React.FC<ModalProps> = ({ opened, onClose, title, children, classNa
         />
         <DialogPrimitive.Content
           className={cn(
-            "fixed left-1/2 top-1/2 z-50 w-full max-w-lg -translate-x-1/2 -translate-y-1/2 p-6 bg-background rounded-lg shadow-lg",
+            "fixed left-1/2 top-1/2 z-50 w-full max-w-lg -translate-x-1/2 -translate-y-1/2 bg-background rounded-lg shadow-lg",
             "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=open]:zoom-in-95 data-[state=closed]:zoom-out-95",
             className
           )}
         >
-          <div className="flex justify-between items-center mb-4">
-            <DialogPrimitive.Title className="text-lg font-semibold">
+          <div className={cn("flex justify-between items-center mb-4 p-6 rounded-t-lg",modalHeader)}>
+            <DialogPrimitive.Title className="text-lg font-semibold text-foreground">
               {title}
             </DialogPrimitive.Title>
-            {withCloseButton && (<DialogPrimitive.Close
+            {withCloseButton && (closeButton === null ? (<DialogPrimitive.Close
               className="rounded-full p-1 text-muted-foreground transition-opacity hover:opacity-70 focus:outline-none"
               aria-label="Close"
             >
               <X className="h-5 w-5" />
-            </DialogPrimitive.Close>)}
+            </DialogPrimitive.Close>) :
+              <DialogPrimitive.Close
+                className="rounded-full p-1 text-muted-foreground transition-opacity hover:opacity-70 focus:outline-none"
+                aria-label="Close"
+              >
+                {closeButton}
+              </DialogPrimitive.Close>
+            )}
           </div>
-          <div>{children}</div>
+          <div className="rounded-b-lg p-6">{children}</div>
         </DialogPrimitive.Content>
       </DialogPrimitive.Portal>
     </DialogPrimitive.Root>
