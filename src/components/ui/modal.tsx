@@ -32,25 +32,25 @@ const Modal: React.FC<ModalProps> = ({ opened, onClose, title, children, classNa
             className
           )}
         >
-          <div className={cn("flex justify-between items-center mb-4 p-6 rounded-t-lg",modalHeader)}>
-            <DialogPrimitive.Title className="text-lg font-semibold text-foreground">
+          <div className={cn("flex justify-between items-start rounded-t-lg",modalHeader)}>
+            <DialogPrimitive.Title className="text-lg p-6 font-semibold text-foreground">
               {title}
             </DialogPrimitive.Title>
             {withCloseButton && (closeButton === null ? (<DialogPrimitive.Close
-              className="rounded-full p-1 text-muted-foreground transition-opacity hover:opacity-70 focus:outline-none"
+              className="rounded-full p-1 m-4 text-muted-foreground transition-opacity hover:opacity-70 focus:outline-none"
               aria-label="Close"
             >
               <X className="h-5 w-5" />
             </DialogPrimitive.Close>) :
               <DialogPrimitive.Close
-                className="rounded-full p-1 text-muted-foreground transition-opacity hover:opacity-70 focus:outline-none"
+                className="rounded-full mt-2 mr-2 p-1 text-muted-foreground transition-opacity hover:opacity-70 focus:outline-none"
                 aria-label="Close"
               >
                 {closeButton}
               </DialogPrimitive.Close>
             )}
           </div>
-          <div className="rounded-b-lg p-6">{children}</div>
+          <div className="rounded-b-lg overflow-hidden">{children}</div>
         </DialogPrimitive.Content>
       </DialogPrimitive.Portal>
     </DialogPrimitive.Root>

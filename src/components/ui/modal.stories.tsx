@@ -46,13 +46,13 @@ export const Default = Template.bind({});
 Default.args = {
   title: "Default Modal",
   children: ({ closeModal }: { closeModal: () => void }) => (
-    <>
+    <div className="p-6">
       <p className="text-foreground-muted">This is a default modal with a close button and a title.</p>
       <div className="mt-[24px] flex gap-2 justify-end">
         <Button variant="outline" onClick={closeModal}>Cancel</Button>
         <Button variant="default" onClick={closeModal}>Confirm</Button>
       </div>
-    </>
+    </div>
   ),
 };
 
@@ -62,13 +62,13 @@ DarkMode.args = {
   title: <p className="text-foreground">DarkMode Modal</p>,
   className: 'dark',
   children: ({ closeModal }: { closeModal: () => void }) => (
-    <>
+    <div className="p-6">
       <p className="text-foreground-muted">This is a dark mode modal with a close button and a title.</p>
       <div className="mt-[24px] flex gap-2 justify-end">
         <Button variant="outline" onClick={closeModal}>Cancel</Button>
         <Button variant="default" onClick={closeModal}>Confirm</Button>
       </div>
-    </>
+    </div>
   ),
 };
 DarkMode.parameters = {
@@ -76,26 +76,16 @@ DarkMode.parameters = {
 };
 
 
-// Modal without a title
-export const WithoutTitle = Template.bind({});
-WithoutTitle.args = {
-  title: null,
-  children: ({ closeModal }: { closeModal: () => void }) => (
-    <>
-      <p className="text-foreground">This modal does not have a title.</p>
-      <Button variant="secondary" onClick={closeModal} className="mt-2">Close</Button>
-    </>
-  ),
-};
+
 
 export const WithoutCloseButton = Template.bind({});
 WithoutCloseButton.args = {
   title: "Modal without Close Button",
   children: ({ closeModal }: { closeModal: () => void }) => (
-    <>
+    <div className="p-6">
       <p className="text-foreground">This modal does not have a close button.</p>
       <Button variant="secondary" onClick={closeModal} className="mt-2">Close</Button>
-    </>
+    </div>
   ),
   withCloseButton: false,
 };
@@ -105,7 +95,7 @@ export const LongContent = Template.bind({});
 LongContent.args = {
   title: "Modal with Long Content",
   children: ({ closeModal }: { closeModal: () => void }) => (
-    <>
+    <div className="p-6">
       <p className="text-foreground">This modal contains a lot of content to test scrolling behavior.</p>
       <div className="max-h-[400px] overflow-y-auto bg-surface-background mt-4">
         <div className="h-[800px] p-4 text-foreground">
@@ -113,7 +103,7 @@ LongContent.args = {
         </div>
       </div>
       <Button variant="secondary" onClick={closeModal} className="my-2">Close</Button>
-    </>
+    </div>
   ),
 };
 
@@ -129,7 +119,7 @@ SettingsModal.args = {
     </div>
   </div>,
   children: ({ closeModal }: { closeModal: () => void }) => (
-    <div className="w-full bg-surface-backgroundPrimary">
+    <div className="w-full bg-surface-backgroundPrimary p-6">
       <Input
         label="Page Url"
         placeholder="Enter page url..."
