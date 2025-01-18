@@ -78,6 +78,7 @@ DarkMode.parameters = {
 
 
 
+
 export const WithoutCloseButton = Template.bind({});
 WithoutCloseButton.args = {
   title: "Modal without Close Button",
@@ -91,6 +92,7 @@ WithoutCloseButton.args = {
   ),
   withCloseButton: false,
 };
+
 
 // Modal with long content
 export const LongContent = Template.bind({});
