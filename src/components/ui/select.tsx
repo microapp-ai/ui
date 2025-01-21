@@ -6,10 +6,6 @@ import { cn } from "@/utils"
 
 const Select = SelectPrimitive.Root
 
-const SelectGroup = SelectPrimitive.Group
-
-const SelectValue = SelectPrimitive.Value
-
 
 interface SelectProps {
   label: React.ReactNode;
@@ -176,7 +172,7 @@ const CustomSelect: React.FC<SelectProps> = ({
   return (
     <div className={`select-container ${className}`} style={{ width }}>
       <label className="block text-md text-foreground font-bold mb-2">{label}</label>
-      <Select onOpenChange={(open) => { }} disabled={disabled}>
+      <Select onOpenChange={() => { }} disabled={disabled}>
         <SelectTrigger className="w-full" disabled={disabled} size={size}>
           <SelectPrimitive.Value placeholder="Select an option" />
         </SelectTrigger>

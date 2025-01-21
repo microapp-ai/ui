@@ -69,7 +69,7 @@ const Slider = React.forwardRef<
           className="relative flex w-full touch-none select-none items-center"
           value={sliderValue}
           onValueChange={handleValueChange}
-          onPointerDown={(e) => {
+          onPointerDown={() => {
             handleClickOnTrack();
             handlePointerDown();
           }} // Handle pointer down on track

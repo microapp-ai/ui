@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Accept, useDropzone } from "react-dropzone";
 import { cn } from "@/utils"; // Updated to use cn
 import { Button } from "./button";
@@ -22,17 +22,22 @@ export const FileUpload: React.FC<FileUploadProps> = ({
   error,
   disabled = false,
   formats = [],
-  value, // Passed files
+  value,
   onFileDrop, // Handler for external control
   renderDropzoneContent, // Custom render function for dropzone content
   width = "100%", // Default width,
   className,
 }) => {
   // Internal state to manage files if not controlled externally
-  const [internalFiles, setInternalFiles] = useState<File[]>([]);
+  const [, setInternalFiles] = useState<File[]>([]);
 
   // Use value if provided, otherwise fallback to internal state
-  const files = value || internalFiles;
+  // const files = value || internalFiles;
+  useEffect(()=>{
+    if(value){
+      setInternalFiles(value);
+    }
+  },[value])
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
     // console.log('Files dropped:', acceptedFiles);
@@ -62,22 +67,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({
   });
 
 
-  const clearFile = (fileName: string) => {
-    const updatedFiles = files.filter((file) => file.name !== fileName);
-    if (onFileDrop) {
-      onFileDrop(updatedFiles);
-    } else {
-      setInternalFiles(updatedFiles);
-    }
-  };
 
-  const clearAllFiles = () => {
-    if (onFileDrop) {
-      onFileDrop([]);
-    } else {
-      setInternalFiles([]);
-    }
-  };
 
   return (
     <div className={cn("flex flex-col", className)} style={{ width }}>

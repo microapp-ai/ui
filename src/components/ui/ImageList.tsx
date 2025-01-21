@@ -1,4 +1,4 @@
-import { IconArrowLeft, IconArrowRampLeft, IconArrowRight, IconTrash } from "@tabler/icons-react";
+import { IconArrowLeft, IconArrowRight, IconTrash } from "@tabler/icons-react";
 import React, { useState, useEffect } from "react";
 
 interface ImageCarouselProps {
