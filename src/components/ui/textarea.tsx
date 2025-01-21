@@ -13,6 +13,28 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
   ({ className, label, description, error, variant = "default",width, ...props }, ref) => {
     return (
       <div className={cn("flex flex-col gap-0",className)} style={{width}}>
+        <style>{`
+          /* Custom Scrollbar */
+          ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+          }
+
+          ::-webkit-scrollbar-track {
+            background: transparent; /* Background of the scrollbar track */
+          }
+
+          ::-webkit-scrollbar-thumb {
+            background-color: #888; /* Color of the scrollbar handle */
+            border-radius: 10px;
+            border: 3px solid transparent; /* Padding around the handle */
+            background-clip: padding-box;
+          }
+
+          ::-webkit-scrollbar-thumb:hover {
+            background-color: #555; /* Darker color when hovered */
+          }
+        `}</style>
         {label && <label className={cn(`text-md  font-bold text-foreground`,!description && 'mb-3')}>{label}</label>}
         {description  && <p className={`text-sm text-muted-foreground mt-[4px] mb-[12px]`}>{description}</p>}
         <textarea
