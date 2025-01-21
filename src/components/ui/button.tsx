@@ -54,6 +54,28 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     const Comp = asChild ? Slot : "button";
     return (
       <div className={cn(className)}>
+        <style>{`
+          /* Custom Scrollbar */
+          ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+          }
+
+          ::-webkit-scrollbar-track {
+            background: transparent; /* Background of the scrollbar track */
+          }
+
+          ::-webkit-scrollbar-thumb {
+            background-color: #888; /* Color of the scrollbar handle */
+            border-radius: 10px;
+            border: 3px solid transparent; /* Padding around the handle */
+            background-clip: padding-box;
+          }
+
+          ::-webkit-scrollbar-thumb:hover {
+            background-color: #555; /* Darker color when hovered */
+          }
+        `}</style>
         <Comp
           className={cn(buttonVariants({ variant, size, className }))}
           ref={ref}

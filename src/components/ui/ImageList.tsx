@@ -1,4 +1,4 @@
-import { IconArrowLeft, IconArrowRampLeft, IconArrowRight, IconTrash } from "@tabler/icons-react";
+import { IconArrowLeft, IconArrowRight, IconTrash } from "@tabler/icons-react";
 import React, { useState, useEffect } from "react";
 
 interface ImageCarouselProps {
@@ -36,6 +36,28 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = ({ images, onChange }
 
   return (
     <div className="flex flex-wrap gap-4 mt-6 max-h-[70vh] overflow-y-auto p-8">
+      <style>{`
+          /* Custom Scrollbar */
+          ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+          }
+
+          ::-webkit-scrollbar-track {
+            background: transparent; /* Background of the scrollbar track */
+          }
+
+          ::-webkit-scrollbar-thumb {
+            background-color: #888; /* Color of the scrollbar handle */
+            border-radius: 10px;
+            border: 3px solid transparent; /* Padding around the handle */
+            background-clip: padding-box;
+          }
+
+          ::-webkit-scrollbar-thumb:hover {
+            background-color: #555; /* Darker color when hovered */
+          }
+        `}</style>
       {selectedImages.map((image, index) => (
         <div
           key={image.name}
