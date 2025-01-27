@@ -32,7 +32,7 @@ Default.args = {
   defaultValue: [50],
   label: "Default Slider",
   description: "This is the default slider without any marks.",
-  width:"430px",
+  width: "430px",
   showValue: true,
 };
 
@@ -60,7 +60,7 @@ WithMarks.args = {
   description: "This slider has custom marks with labels.",
   marks: [
     { value: 0, label: "Low" },
-    { value: 25, label: "Mid-Low" },
+    // { value: 25, label: "Mid-Low" },
     { value: 50, label: "Mid" },
     { value: 75, label: "Mid-High" },
     { value: 100, label: "High" },
@@ -68,6 +68,28 @@ WithMarks.args = {
   width: "430px",
   showValue: true,
 };
+
+export const TEST_SLIDER: Story = (args) => {
+  return (<div className="w-full">
+    <Slider
+      min={0}
+      max={100}
+      step={25}
+      defaultValue={[50]}
+      label="Slider with Marks"
+      description="This slider has custom marks with labels."
+      marks={[
+        { value: 0, label: "0" },
+        { value: 25, label: "25" },
+        { value: 50, label: "50" },
+        // { value: 75, label: "75" },
+        { value: 100, label: "10000" },
+      ]}
+      width="430px"
+      showValue={true}
+    />
+  </div>)
+}
 
 // Disabled Slider
 export const Disabled = Template.bind({});
@@ -124,3 +146,4 @@ DarkMode.args = {
 DarkMode.parameters = {
   backgrounds: { default: "dark" },
 };
+

@@ -10,6 +10,8 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
   error?: boolean; // Error state
   errorMessage?: string; // Error message
   width?: string | number; // Custom width for the input
+  value?: string; // Value of the input
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void; // OnChange event handler
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
