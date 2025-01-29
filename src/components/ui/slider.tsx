@@ -119,13 +119,15 @@ const Slider = React.forwardRef<
 
         {marks.length > 0 && (
           <div className="relative w-full mt-3 flex justify-between pointer-events-none">
-            {marks.map((mark) => {
+            {marks.map((mark, index) => {
               const position = ((mark.value - (props.min ?? 0)) / ((props.max ?? 100) - (props.min ?? 0))) * 100;
 
               return (
                 <div
                   key={mark.value}
-                  className="absolute text-xs text-muted-foreground"
+                  className={
+                    (index === marks.length - 1 ? "relative" : "absolute") +
+                    " text-xs text-muted-foreground"}
                   style={{
                     left: `${position}%`,
                     transform: "translateX(-50%)",
