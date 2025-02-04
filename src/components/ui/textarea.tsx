@@ -22,6 +22,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
 
           ::-webkit-scrollbar-track {
             background: transparent; /* Background of the scrollbar track */
+            margin: 18px;
           }
 
           ::-webkit-scrollbar-thumb {
