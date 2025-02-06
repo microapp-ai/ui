@@ -159,3 +159,52 @@ SettingsModal.args = {
   modalHeader: "bg-surface-backgroundSecondary"
 };
 
+export const SettingsModalDarkTheme = Template.bind({});
+SettingsModalDarkTheme.args = {
+  title: <div className="">
+    <div className="text-lg text-foreground font-[600]">Settings</div>
+    <div className="text-foreground-muted font-[400] mb-4">
+      This is a short description
+    </div>
+  </div>,
+  className: 'dark',
+  children: ({ closeModal }: { closeModal: () => void }) => (
+    <div className="w-full bg-surface-backgroundPrimary pb-6">
+      <div className="border-t border-foreground-border mb-6" />
+      <div className="px-6">
+        <Input
+          label="Page Url"
+          placeholder="Enter page url..."
+          value={"https://microapp.ai"}
+          className="mb-2"
+        />
+        <Select
+          label="Theme"
+          options={[
+            { label: "Light", value: "light" },
+            { label: "Dark", value: "dark" },
+          ]}
+          className="dark mb-8"
+        />
+      </div>
+      {/*divider*/}
+      <div className="border-t border-foreground-border my-3" />
+
+      <div className="mt-[24px] flex gap-2 justify-end px-6">
+        <Button variant="outline" onClick={closeModal}>Cancel</Button>
+        <Button variant="default" onClick={closeModal}>Confirm</Button>
+      </div>
+
+
+    </div>
+  ),
+  closeButton: <Button size="icon" variant="outline">
+    <XIcon className="h-5 w-5" />
+  </Button>,
+  modalHeader: "bg-surface-backgroundSecondary"
+};
+
+
+SettingsModalDarkTheme.parameters = {
+  backgrounds: { default: "dark" },
+};
